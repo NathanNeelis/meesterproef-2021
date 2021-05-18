@@ -3,18 +3,18 @@ console.log('hello world')
 
 async function getData(url) {
 
-    // let username = 'nathan.neelis@hva.nl'
-    // let password = ''
-    // let headers = new Headers();
-    // headers.set('Authorization', 'Basic ' + btoa(username + ":" + password));
+    let username = 'nathan.neelis@hva.nl'
+    let password = ''
+    let headers = new Headers();
+    headers.set('Authorization', 'Basic ' + btoa(username + ":" + password));
 
-    // const response = await fetch(url, {
-    //     method: 'GET',
-    //     headers: headers,
-    //     //credentials: 'user:passwd'
-    // });
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: headers,
+        //credentials: 'user:passwd'
+    });
 
-    const response = await fetch(url);
+    // const response = await fetch(url);
     console.log('response', response)
     const data = await response.json();
     console.log('data', data)
