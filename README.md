@@ -53,3 +53,4 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 
 
 ## Resources
+[fetch api authentication](https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch)  
