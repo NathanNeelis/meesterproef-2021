@@ -58,3 +58,99 @@ h1 {
     font-weight: 300;
     color: var(--darkGrey);
 }
+
+
+
+
+
+/* Data overview  */
+.scroll-container {
+    overflow-x: auto;
+    width: 80vw;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    margin: 2rem auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 5px;
+    /* height: 15px; */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-top: 8px solid white;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: white;
+}
+
+.overview {
+    background-color: var(--lightGrey);
+    width: 80vw;
+    /* height: 40rem; */
+    display: inline-block;
+    padding: 2rem;
+    scroll-snap-align: center;
+    border-radius: 1rem;
+}
+
+.dailyOverview {
+    margin-right: 2rem;
+}
+
+.dailyWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.dailyScore {
+    width: 50%;
+    /* background: yellow; */
+}
+
+
+.value {
+    width: 10rem;
+    height: 10rem;
+    border: 3px solid var(--orange);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.activityOverview {
+    width: 50%;
+    /* background: lightgreen; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start; */
+}
+
+.activity {
+    padding: 0.3rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity dt {
+    font-weight: 300;
+}
+
+.activity dd {
+    font-weight: 700;
+}
+
+.dailyScore p {
+    font-size: 3rem;
+    color: var(--orange);
+}
