@@ -22,20 +22,37 @@
 
 html {
     font-family: var(--fontRoboto);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-h1 {
+
+
+
+/* header */
+header {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0 1rem 0;
+}
+
+header img {
+    width: 10rem;
+}
+
+header h2 {
     color: var(--blue);
     font-weight: 700;
 }
-
-
 
 /* bottom navigation  */
 .navBottom {
     background: var(--lightGrey);
     width: 100vw;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
@@ -75,7 +92,6 @@ h1 {
 
 .scroll-container::-webkit-scrollbar {
     width: 5px;
-    /* height: 15px; */
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
@@ -153,4 +169,95 @@ h1 {
 .dailyScore p {
     font-size: 3rem;
     color: var(--orange);
+}
+
+/* ACTIVITEITEN OVERVIEW PAGE  */
+
+.activities {
+    width: 80vw;
+    margin: 4rem auto 0 auto;
+}
+
+.activities h2 {
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.activities_wrapper {
+    width: 80vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.activities_wrapper::-webkit-scrollbar {
+    width: 5px;
+}
+
+.activities_wrapper::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-top: 8px solid white;
+}
+
+.activities_wrapper::-webkit-scrollbar-track {
+    background: white;
+}
+
+.activity_overview {
+    min-width: 12rem;
+    height: 12rem;
+    background: var(--lightGrey);
+    padding: 2rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--darkGrey);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity_overview img {
+    height: 4.5rem;
+}
+
+.activity_overview p {
+    width: 100%;
+    text-align: center;
+}
+
+.activity_overview.completed {
+    /* border: 2px solid var(--orange); */
+    background: var(--darkGrey);
+}
+
+.activity_overview.completed p {
+    color: white;
+}
+
+.completed_score {
+    min-height: 5.5rem;
+    max-width: 5.5rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+
+.completed_score span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* footer  */
+footer {
+    margin-bottom: 10rem;
 }

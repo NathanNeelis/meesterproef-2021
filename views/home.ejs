@@ -1,22 +1,32 @@
 <%- include('includes/head.ejs'); %>
 
-<section class="intro">
-    <h1>Project Hipper</h1>
-</section>
+<header>
+    <%- include('includes/header_logo.ejs'); %>
+    <%- include('includes/header_title_overview.ejs'); %>
+</header>
 
+<main>
 
-<section class="dataOverview">
-    <div class="scroll-container">
-        <%- include('includes/daily_overview.ejs'); %>
-        <%- include('includes/weekly_overview.ejs'); %>
-        <!-- <article class="dailyOverview overview">
-            <h2>daily</h2>
-        </article>
-        <article class="weeklyOverview overview">
-            <h2>weekly</h2>
-        </article> -->
-    </div>
-</section>
+    <section class="dataOverview">
+        <div class="scroll-container">
+            <%- include('includes/daily_overview.ejs'); %>
+            <%- include('includes/weekly_overview.ejs'); %>
+        </div>
+    </section>
 
-<%- include('includes/nav_bottom.ejs'); %>
+    <section class="activities">
+        <h2>Kies een activiteit om te starten met bewegen</h2>
+        <%- include('includes/home_activities.ejs'); %>
+    </section>
+
+    <section class="activities">
+        <h2>Activiteiten gedaan vandaag</h2>
+        <%- include('includes/completed_activities.ejs'); %>
+    </section>
+</main>
+
+<footer>
+    <%- include('includes/nav_bottom.ejs'); %>
+</footer>
+
 <%- include('includes/footer.ejs'); %>
