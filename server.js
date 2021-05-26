@@ -7,6 +7,7 @@ const port = process.env.PORT || 2000
 
 // imports
 const home = require('./routes/home');
+const activities = require('./routes/activities')
 
 // EXPRESS ROUTeS
 app.use(express.static(path.resolve("public")))
@@ -14,6 +15,7 @@ app.use(express.static(path.resolve("public")))
 
 // Routing
 app.get("/", home)
+    .get("/activities", activities)
 
 app.listen(port, () => {
     console.log(`Server is working at http://localhost:${port}`)

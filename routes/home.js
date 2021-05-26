@@ -15,18 +15,16 @@ async function home(req, res) {
     const rawDailyData = await getData(epochURL) // data every 15 minutes
 
     const currentDay = weeklyData[14] // This should be automated for the current day.
-    const currentWeek = getCurrentWeek(weeklyData)
+    const currentWeek = getCurrentWeek(weeklyData) // At the moment the PAM average of all the data plus 1
 
-    renderPage(weeklyData, rawDailyData, currentDay)
+    renderPage(weeklyData, rawDailyData, currentDay, currentWeek)
 
-    function renderPage(weeklyData, rawDailyData, currentDay) {
-        // console.log("this is weekly data", weeklyData);
-        // console.log("this is raw daily data", rawDailyData);
-        // console.log(currentDay)
+    function renderPage(weeklyData, rawDailyData, currentDay, currentWeek) {
         res.render("home.ejs", {
             weeklyData: weeklyData,
             rawDailyData: rawDailyData,
-            currentDay: currentDay
+            currentDay: currentDay,
+            currentWeek: currentWeek
         });
     }
 
@@ -58,8 +56,8 @@ function getCurrentWeek(data) {
         pam
     }) => arrayTotal += pam);
 
-    const avarage = Math.round(arrayTotal / length);
-    console.log('avarage pam score dataset', avarage)
+    const avarage = Math.round(arrayTotal / length) + 1;
+    // console.log('avarage pam score dataset', avarage)
 
     return avarage
 

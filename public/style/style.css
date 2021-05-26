@@ -175,7 +175,7 @@ header h2 {
 
 .activities {
     width: 80vw;
-    margin: 4rem auto 0 auto;
+    margin: 4rem auto 2rem auto;
 }
 
 .activities h2 {
@@ -189,6 +189,7 @@ header h2 {
     overflow-y: hidden;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .activities_wrapper::-webkit-scrollbar {
@@ -260,4 +261,148 @@ header h2 {
 /* footer  */
 footer {
     margin-bottom: 10rem;
+}
+
+
+
+
+/* TESTING PROGRESS BAR  */
+/* EXAMPLE NOT YET HOW I WANT IT  */
+.progress {
+    width: 10rem;
+    height: 10rem;
+    font-size: 3rem;
+    color: var(--orange);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background: var(--lightGrey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weekAvarage {
+    font-size: 1.5rem;
+    width: 75%;
+    /* background: yellow; */
+    border-top: 1px solid var(--orange);
+}
+
+.progress .title {
+    position: relative;
+    z-index: 100;
+}
+
+.progress .overlay {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--lightGrey);
+}
+
+.progress .left,
+.progress .right {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 10px solid var(--orange);
+    border-radius: 100px 0px 0px 100px;
+    border-right: 0;
+    transform-origin: right;
+}
+
+.progress .left {
+    animation: load1 1s linear forwards;
+}
+
+.progress .right {
+    animation: load3 .8s linear forwards 1s;
+}
+
+@keyframes load1 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes load3 {
+    0% {
+        z-index: 100;
+        transform: rotate(180deg);
+    }
+
+    100% {
+        z-index: 100;
+        transform: rotate(320deg);
+    }
+}
+
+/* END PROGRESS BAR TEST  */
+
+.personal_overview {
+    background: var(--lightGrey);
+    width: 100vw;
+    padding: 4rem 1rem;
+    margin-top: 1rem;
+}
+
+.personal_overview h2 {
+    text-align: center;
+    color: var(--darkGrey);
+}
+
+.overview_wrapper {
+    background: var(--lightGrey);
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+    /* padding: 4rem 1rem; */
+}
+
+.overview_wrapper a {
+    padding: 1rem 2rem;
+    background-color: var(--orange);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: .3rem;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+.tst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overviewBtn {
+    padding: 1rem 2rem;
+    background-color: var(--orange);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: .3rem;
+    text-decoration: none;
 }

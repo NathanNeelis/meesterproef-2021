@@ -1,8 +1,8 @@
-const CORE_CACHE_VERSION = 'v1'
+const CORE_CACHE_VERSION = 'v2'
 const CORE_CACHE_NAME = 'hipper-cache' + CORE_CACHE_VERSION;
 const CORE_ASSETS = [
     // '/offline',
-    '/style/style.css',
+    // '/style/style.css',
 ];
 
 self.addEventListener('install', (event) => {

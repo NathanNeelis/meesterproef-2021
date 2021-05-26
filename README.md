@@ -48,6 +48,22 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 
 ## Data & API
 
+## Planning
+
+* [ ] Create Database
+Save users in database  
+save activities in database each day  
+save the pam data in the database  
+* [ ] Make a login system   
+* [ ] Start activity  
+Start an activity for a specific time    
+Create an activity for this timeslot in the database  
+* [ ] Validate Activity  
+Validate this activity with the PAM raw data  
+Calculate the PAM score during this activity from raw data  
+Add PAM score to the completed activity in the app  
+
+
 ## License
 [MIT](https://github.com/NathanNeelis/meesterproef-2021/blob/master/LICENSE)  
 
