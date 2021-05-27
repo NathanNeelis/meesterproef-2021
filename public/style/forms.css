@@ -64,6 +64,15 @@
     color: var(--orange);
 }
 
+.loginError {
+    color: white;
+    padding: 1rem 1rem;
+    background: var(--orange);
+    margin: 2rem 0;
+    display: block;
+    text-align: center;
+}
+
 
 /* REGISTER FORM  */
 .registerUser {

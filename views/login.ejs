@@ -9,8 +9,23 @@
         <div>
             <form action="/login" class="l-form" id="login_form" method="POST">
                 <legend>Inloggen</legend>
+
+
+                <% if (error) { %>
+                <span class="loginError"> De combinatie van email en wachtwoord komt niet overeen</span>
                 <label for="loginEmail">E-mail adress</label>
-                <input type="text" name="loginEmail" id="loginEmail" placeholder="E-mail adress">
+                <input type="text" name="loginEmail" id="loginEmail" value="<%= email %>">
+                <% } else {%>
+                <label for="loginEmail">E-mail adress</label>
+                <input type="text" name="loginEmail" id="loginEmail" placeholder="E-mailadres">%>
+                <% } %>
+
+
+                <!-- <label for="loginEmail">E-mail adress</label>
+                <input type="text" name="loginEmail" id="loginEmail" placeholder="E-mailadres">%> -->
+
+
+
 
                 <label for="loginPassword">Wachtwoord</label>
                 <input type="password" name="loginPassword" id="loginPassword" placeholder="Wachtwoord">

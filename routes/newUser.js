@@ -13,7 +13,7 @@ mongo.MongoClient.connect(
         }
 
         db = client.db(process.env.DB_NAME);
-        console.log("Connected correctly to MongoDB server");
+        // console.log("Connected correctly to MongoDB server");
     }
 );
 

@@ -34,6 +34,7 @@ const activities = require('./routes/activities')
 const login = require('./routes/login')
 const register = require('./routes/register')
 const newUser = require('./routes/newUser')
+const loginpost = require('./routes/loginpost')
 
 // Utils
 const userRedirectLogin = require('./utils/userRedirectLogin')
@@ -53,12 +54,13 @@ app.use(express.static(path.resolve("public")))
     }));;
 
 // Routing
-app.get("/", home)
-    .get("/activities", activities)
+app.get("/", userRedirectLogin, home)
+    .get("/activities", userRedirectLogin, activities)
     .get("/login", login)
     .get("/register", register)
 
 app.post("/register", newUser)
+    .post("/login", loginpost)
 
 app.listen(port, () => {
     console.log(`Server is working at http://localhost:${port}`)
