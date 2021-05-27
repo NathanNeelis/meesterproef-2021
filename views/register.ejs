@@ -1,0 +1,90 @@
+<%- include('includes/head.ejs'); %>
+
+<header>
+    <%- include('includes/header_logo.ejs'); %>
+</header>
+
+<main>
+    <section class="registerUser">
+        <div>
+            <form action="/register" class="r-form" id="register_form" method="POST">
+                <h2>Registreren bij Hipper</h2>
+                <fieldset>
+                    <legend>Account informatie</legend>
+                    <p>Deze informatie is nodig om de registratie te voltooien</p>
+                    <!-- username / email  -->
+                    <label for="signupMail">Wat is uw e-mailadres?</label>
+                    <input type="email" id="signupMail" name="signupMail" placeholder="e-mailadres" required>
+
+                    <!-- password -->
+                    <label for="signupPassword">Vul hier een wachtwoord in</label>
+                    <input type="password" id="signupPassword" name="signupPassword" placeholder="wachtwoord" required>
+
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Persoonlijke informatie</legend>
+                    <p>Deze informatie is nodig om de registratie te voltooien</p>
+                    <!-- name user  -->
+                    <label for="fullName">Wat is uw volledige naam?</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="wat is uw naam?">
+
+                    <!-- Age / birth date -->
+                    <label for="birthDate">Wat is uw geboortedatum?</label>
+                    <input type="date" id="birthDate" name="birthDate" placeholder="31-01-1990">
+
+                    <!-- location  -->
+                    <label for="location">Wat is uw woonplaats?</label>
+                    <input type="text" id="location" name="location" placeholder="waar woont u?">
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Medische informatie</legend>
+                    <p>U bent <em>niet</em> verplicht deze informatie in te vullen</p>
+                    <!-- Ergo / fysio therapeut  -->
+                    <label for="practice">Bij welke Ergo of Fysio praktijk wordt u behandeld?</label>
+                    <input type="text" id="practice" name="practice" placeholder="wat is uw revalidatie praktijk?">
+
+                    <!-- Hoe lang al aan het revalideren -->
+                    <label for="duration_revalidation">Hoe lang bent u al aan het revalideren?</label>
+                    <input type="text" id="duration_revalidation" name="duration_revalidation"
+                        placeholder="bijvoorbeeld: 1 jaar en 3 maanden">
+
+                    <!-- waarvan aan het revalideren? -->
+                    <label for="cause_revalidation">Waar bent u van aan het revalideren?</label>
+                    <input type="text" id="cause_revalidation" name="cause_revalidation"
+                        placeholder="bijvoorbeeld: Knie operatie of Covid-19">
+
+                    <!-- overige opmerkingen betreft revalideren  -->
+                    <label for="remarks">Heeft u nog verdere opmerkingen betreft het revalideren?</label>
+                    <textarea name="remarks" id="remarks" placeholder="overige opmerkingen"></textarea>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Hipper</legend>
+                    <p>U bent <em>niet</em> verplicht deze informatie in te vullen</p>
+                    <!-- PAM client id  -->
+                    <label for="pam_client_id">Hipper Client ID</label>
+                    <input type="text" id="pam_client_id" name="pam_client_id" placeholder="1096">
+
+                    <!-- begin datum hipper  -->
+                    <label for="startdate_hipper">Startdatum Hipper</label>
+                    <input type="date" id="startdate_hipper" name="startdate_hipper" placeholder="31-01-2021">
+                    <!-- TO DO: Current date in placeholder  -->
+                </fieldset>
+
+
+                <button form="register_form" type="submit" class="submitBtn">
+                    Registreren
+                </button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+
+<%- include('includes/footer.ejs'); %>

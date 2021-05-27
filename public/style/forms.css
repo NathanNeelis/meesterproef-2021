@@ -1,0 +1,157 @@
+/* LOGIN FORM  */
+.loginUser {
+    width: 100vw;
+    height: 83vh;
+    background: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginUser div {
+    width: 60vw;
+    background: white;
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+.l-form label {
+    display: block;
+    font-size: 1rem;
+}
+
+.l-form input {
+    display: block;
+    width: 100%;
+    background-color: var(--lightGrey);
+    border: 1px solid white;
+    padding: .7rem .5rem;
+    border-radius: .5rem;
+    margin-top: .3rem;
+    font-size: 1.2rem;
+}
+
+.l-form legend {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 1rem 0 2rem 0;
+    color: var(--orange);
+}
+
+.l-form label:last-of-type {
+    margin-top: 1rem;
+}
+
+.submitBtn {
+    width: 100%;
+    background-color: var(--orange);
+    border: none;
+    border-radius: .3rem;
+    padding: .7rem .3rem;
+    color: white;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.loginUser p {
+    margin-top: 2rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: var(--darkGrey);
+}
+
+.loginUser a {
+    color: var(--orange);
+}
+
+
+/* REGISTER FORM  */
+.registerUser {
+    width: 100vw;
+    /* height: 150vh; */
+    background: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.registerUser div {
+    width: 80vw;
+    background: white;
+    border-radius: 1rem;
+    padding: 3rem;
+    margin: 4rem 0;
+}
+
+
+.registerUser h2 {
+    font-size: 2rem;
+    margin: 1rem 0 2rem 0;
+    color: var(--orange);
+    font-weight: 300;
+}
+
+.r-form legend {
+    font-size: 1.5rem;
+    color: var(--blue);
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.r-form fieldset {
+    padding: 0 2rem 1rem 2rem;
+    margin: 2rem 0;
+    border: 1px solid var(--darkGrey);
+    border-radius: 1rem;
+}
+
+
+.r-form label {
+    display: block;
+    font-size: 1rem;
+
+}
+
+.r-form input {
+    display: block;
+    width: 100%;
+    background-color: var(--lightGrey);
+    border: 1px solid white;
+    padding: .7rem .5rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+
+    font-family: var(--fontRoboto);
+    font-weight: 300;
+    color: var(--darkGrey)
+}
+
+.r-form fieldset p {
+    padding: 0 0 1rem 0;
+    color: var(--orange);
+    font-weight: 300;
+}
+
+.r-form em {
+    font-weight: 700;
+}
+
+.r-form textarea {
+    width: 100%;
+    background-color: var(--lightGrey);
+    border: 1px solid white;
+    padding: .7rem .5rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+
+    font-family: var(--fontRoboto);
+    font-weight: 300;
+
+}

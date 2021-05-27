@@ -1,0 +1,33 @@
+<%- include('includes/head.ejs'); %>
+
+<header>
+    <%- include('includes/header_logo.ejs'); %>
+</header>
+
+<main>
+    <section class="loginUser">
+        <div>
+            <form action="/login" class="l-form" id="login_form" method="POST">
+                <legend>Inloggen</legend>
+                <label for="loginEmail">E-mail adress</label>
+                <input type="text" name="loginEmail" id="loginEmail" placeholder="E-mail adress">
+
+                <label for="loginPassword">Wachtwoord</label>
+                <input type="password" name="loginPassword" id="loginPassword" placeholder="Wachtwoord">
+
+                <button form="login_form" type="submit" class="submitBtn">
+                    Inloggen
+                </button>
+            </form>
+
+            <p>
+                Nog geen account?
+                <a href="/register">Registreer hier</a>
+            </p>
+        </div>
+    </section>
+
+</main>
+
+
+<%- include('includes/footer.ejs'); %>
