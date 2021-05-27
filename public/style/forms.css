@@ -74,6 +74,8 @@
 }
 
 
+
+
 /* REGISTER FORM  */
 .registerUser {
     width: 100vw;
@@ -163,4 +165,12 @@
     font-family: var(--fontRoboto);
     font-weight: 300;
 
+}
+
+.importantInfo {
+    display: block;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: var(--orange);
+    color: white;
 }

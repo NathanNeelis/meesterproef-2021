@@ -1,7 +1,7 @@
 # Meesterproef 2021
 
 ### View the app
-:earth_americas:  [live website]()  - Not yet deployed 
+:earth_americas:  [live website](https://hipper-pam.herokuapp.com/) 
 
 #### Description
 Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op basis van sensor technologie (een IOT device) de beweging registreert van de gebruiker en deze data naar een server stuurt. Deze data is inzichtelijk via een dashboard. Dit project gaat over het visualiseren van deze data op dit dashboard. In dit project ga ik onderzoeken wat voor data er beschikbaar is en wat hiervan van belang is voor de doelgroep. Ook ga ik uitzoeken hoe Hipper de gebruiker kan motiveren te gaan bewegen zonder het risico te lopen dat ze gedemotiveerd worden. - translate to English  

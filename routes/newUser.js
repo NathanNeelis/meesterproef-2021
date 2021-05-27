@@ -20,25 +20,46 @@ mongo.MongoClient.connect(
 
 // register data to database
 function newUser(req, res, next) {
-    db.collection("Users").insertOne({
-            email: req.body.signupMail,
-            password: req.body.signupPassword,
-            name: req.body.fullName,
-            birthDate: req.body.birthDate,
-            location: req.body.location,
-            medical_information: {
-                practice: req.body.practice,
-                duration_revalidation: req.body.duration_revalidation,
-                cause: req.body.cause_revalidation,
-                remarks: req.body.remarks
-            },
-            hipper_details: {
-                pam_client_id: req.body.pam_client_id,
-                startdate: req.body.startdate_hipper
-            },
-        },
-        done
-    );
+    const username = req.body.signupMail;
+
+    db.collection("Users").findOne({
+        email: username
+    }, (err, user) => {
+        if (err) {
+            console.log('MongoDB Error:' + err);
+        } else if (user) {
+            console.log('error: user already in database')
+            res.render('register.ejs', {
+
+            });
+        } else {
+            db.collection("Users").insertOne({
+                    email: req.body.signupMail,
+                    password: req.body.signupPassword,
+                    name: req.body.fullName,
+                    birthDate: req.body.birthDate,
+                    location: req.body.location,
+                    medical_information: {
+                        practice: req.body.practice,
+                        duration_revalidation: req.body.duration_revalidation,
+                        cause: req.body.cause_revalidation,
+                        remarks: req.body.remarks
+                    },
+                    hipper_details: {
+                        pam_client_id: req.body.pam_client_id,
+                        startdate: req.body.startdate_hipper
+                    },
+                },
+                done
+            );
+        }
+    });
+
+
+
+
+
+
 
 
     function done(err, data) {
