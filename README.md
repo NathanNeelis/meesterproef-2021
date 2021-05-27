@@ -75,3 +75,4 @@ Or save the PAM score with the user in the database and when the user completes 
 
 ## Resources
 [fetch api authentication](https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch)  
+[manifest generator](https://www.simicart.com/manifest-generator.html/)  
