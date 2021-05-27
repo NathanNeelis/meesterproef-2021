@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs'); %>
+
+<header>
+    <%- include('includes/header_logo.ejs'); %>
+    <h2>Informatie</h2>
+
+    <% if (user) { %>
+    <a href="/logout"> logout</a>
+    <% } else { %>
+    <a href="/login"> login</a>
+    <% } %>
+
+</header>
+
+<main>
+    <h2>hier komt de informatie pagina.</h2>
+    <h3>to be updated</h3>
+
+</main>
+
+<footer>
+    <%- include('includes/nav_bottom.ejs'); %>
+</footer>
+
+<%- include('includes/footer.ejs'); %>

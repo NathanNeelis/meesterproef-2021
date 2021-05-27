@@ -3,6 +3,13 @@
 <header>
     <%- include('includes/header_logo.ejs'); %>
     <%- include('includes/header_title_activities.ejs'); %>
+
+    <% if (user) { %>
+    <a href="/logout"> logout</a>
+    <% } else { %>
+    <a href="/login"> login</a>
+    <% } %>
+
 </header>
 
 <main>

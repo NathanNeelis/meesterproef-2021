@@ -22,7 +22,6 @@ async function home(req, res) {
     function renderPage(weeklyData, rawDailyData, currentDay, currentWeek) {
 
         if (req.session.user) {
-            console.log('user found', req.session.user.user.name)
             const user = req.session.user.user
 
             res.render("home.ejs", {

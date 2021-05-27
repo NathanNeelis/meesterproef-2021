@@ -20,14 +20,23 @@ async function activities(req, res) {
     renderPage(weeklyData, rawDailyData, currentDay)
 
     function renderPage(weeklyData, rawDailyData, currentDay) {
-        // console.log("this is weekly data", weeklyData);
-        // console.log("this is raw daily data", rawDailyData);
-        // console.log(currentDay)
-        res.render("activities.ejs", {
-            weeklyData: weeklyData,
-            rawDailyData: rawDailyData,
-            currentDay: currentDay
-        });
+        if (req.session.user) {
+            const user = req.session.user.user
+
+            res.render("activities.ejs", {
+                weeklyData: weeklyData,
+                rawDailyData: rawDailyData,
+                currentDay: currentDay,
+                user: user
+            });
+        } else {
+            res.render("activities.ejs", {
+                weeklyData: weeklyData,
+                rawDailyData: rawDailyData,
+                currentDay: currentDay
+            });
+        }
+
     }
 
 }
