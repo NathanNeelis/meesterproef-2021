@@ -35,6 +35,7 @@ const login = require('./routes/login')
 const register = require('./routes/register')
 const newUser = require('./routes/newUser')
 const loginpost = require('./routes/loginpost')
+const logout = require('./routes/logout')
 
 // Utils
 const userRedirectLogin = require('./utils/userRedirectLogin')
@@ -58,6 +59,7 @@ app.get("/", userRedirectLogin, home)
     .get("/activities", userRedirectLogin, activities)
     .get("/login", login)
     .get("/register", register)
+    .get("/logout", logout)
 
 app.post("/register", newUser)
     .post("/login", loginpost)

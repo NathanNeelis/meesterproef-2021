@@ -20,12 +20,28 @@ async function home(req, res) {
     renderPage(weeklyData, rawDailyData, currentDay, currentWeek)
 
     function renderPage(weeklyData, rawDailyData, currentDay, currentWeek) {
-        res.render("home.ejs", {
-            weeklyData: weeklyData,
-            rawDailyData: rawDailyData,
-            currentDay: currentDay,
-            currentWeek: currentWeek
-        });
+
+        if (req.session.user) {
+            console.log('user found', req.session.user.user.name)
+            const user = req.session.user.user
+
+            res.render("home.ejs", {
+                weeklyData: weeklyData,
+                rawDailyData: rawDailyData,
+                currentDay: currentDay,
+                currentWeek: currentWeek,
+                user: user
+            });
+        } else {
+
+            res.render("home.ejs", {
+                weeklyData: weeklyData,
+                rawDailyData: rawDailyData,
+                currentDay: currentDay,
+                currentWeek: currentWeek
+            });
+        }
+
     }
 
 }

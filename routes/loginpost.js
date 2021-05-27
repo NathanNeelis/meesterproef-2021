@@ -42,6 +42,9 @@ function loginpost(req, res) {
     const checkPassword = (user) => {
         if (password === user.password) {
             req.session.sessionID = user._id;
+            req.session.user = {
+                user: user
+            }
             res.redirect('/');
         } else {
             res.render('login.ejs', {
