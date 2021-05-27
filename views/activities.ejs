@@ -1,0 +1,69 @@
+<%- include('includes/head.ejs'); %>
+
+<header>
+    <%- include('includes/header_logo.ejs'); %>
+    <%- include('includes/header_title_activities.ejs'); %>
+</header>
+
+<main>
+
+    <section class="personal_overview">
+        <h2>Je persoonlijke overzicht</h2>
+        <article class="overview_wrapper">
+            <a href="/">Overzicht activiteiten</a>
+            <a href="/">Doelen overzicht</a>
+        </article>
+
+    </section>
+
+    <section class="activities">
+        <h2>Je meest recente activiteiten</h2>
+        <div class="activities_wrapper">
+            <a href="/activities/" class="activity_overview completed">
+                <p>Wandelen</p>
+                <p class="completed_score"> <span>1.5</span> punten</p>
+            </a>
+            <a href="/activities/" class="activity_overview completed">
+                <p>Boodschappen doen</p>
+                <p class="completed_score"> <span>3.5</span> punten</p>
+            </a>
+            <a href="/activities/" class="activity_overview completed">
+                <p>Stofzuigen</p>
+                <p class="completed_score"> <span>2</span> punten</p>
+            </a>
+            <a href="/activities/" class="activity_overview completed">
+                <p>Wandelen</p>
+                <p class="completed_score"> <span>5</span> punten</p>
+            </a>
+        </div>
+        <div class="tst">
+            <a href="#" class="overviewBtn">overzicht alle activiteiten</a>
+        </div>
+
+    </section>
+
+    <section class="activities">
+        <h2>Wat voor lichte activiteiten kan je doen?</h2>
+        <%- include('includes/light_activities.ejs'); %>
+    </section>
+
+    <section class="activities">
+        <h2>Een volgende stap? Doe een medium activiteit</h2>
+        <%- include('includes/medium_activities.ejs'); %>
+    </section>
+
+    <section class="activities">
+        <h2>Voel jij je helemaal goed? Probeer een zware activiteit</h2>
+        <%- include('includes/heavy_activities.ejs'); %>
+    </section>
+
+    <section class="achievments activities">
+        <h2>Uitgelichte prestaties</h2>
+    </section>
+</main>
+
+<footer>
+    <%- include('includes/nav_bottom.ejs'); %>
+</footer>
+
+<%- include('includes/footer.ejs'); %>

@@ -1,0 +1,37 @@
+<article class="dailyOverview overview">
+    <h2>Dagelijks doel</h2>
+    <section class="dailyWrapper">
+        <!-- <div class="dailyScore"> -->
+        <!-- <div class="value">
+                <p><%=currentDay.values[0].pam %></p>
+            </div> -->
+        <div class="progress">
+            <div class="title timer" data-from="0" data-to="12" data-speed="1800">
+                <span>
+                    <%=currentDay.values[0].pam %>
+                </span>
+                <span class="weekAvarage">
+                    <%=currentWeek %>
+                </span>
+            </div>
+            <div class="overlay"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <!-- </div> -->
+        <div class="activityOverview">
+            <div class="activity">
+                <dt>Lichte activiteiten</dt>
+                <dd><%=currentDay.values[0].light_activity %></dd>
+            </div>
+            <div class="activity">
+                <dt>Medium activiteiten</dt>
+                <dd><%=currentDay.values[0].medium_activity %></dd>
+            </div>
+            <div class="activity">
+                <dt>Zware activiteiten</dt>
+                <dd><%=currentDay.values[0].heavy_activity %></dd>
+            </div>
+        </div>
+    </section>
+</article>

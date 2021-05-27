@@ -48,9 +48,31 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 
 ## Data & API
 
+## Planning
+
+* [ ] Create Database
+Save users in database  
+save activities in database each day  
+save the pam data in the database  
+* [ ] Make a login system   
+* [ ] Start activity  
+Start an activity for a specific time    
+Create an activity for this timeslot in the database  
+* [ ] Validate Activity  
+Validate this activity with the PAM raw data  
+Calculate the PAM score during this activity from raw data  
+Add PAM score to the completed activity in the app  
+* [ ] Weekly / daily goal  
+which week is not now?  
+What is the avarage PAM score of last week?  
+Base the new daily / weekly goals on last weeks data?  
+Or save the PAM score with the user in the database and when the user completes the daily goal seven times, the daily goal gets upgraded by 1?  
+
+
 ## License
 [MIT](https://github.com/NathanNeelis/meesterproef-2021/blob/master/LICENSE)  
 
 
 ## Resources
 [fetch api authentication](https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch)  
+[manifest generator](https://www.simicart.com/manifest-generator.html/)  

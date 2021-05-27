@@ -33,4 +33,4 @@ const epochURL = 'https://gist.githubusercontent.com/NathanNeelis/9a449e389ab303
 
 // const endpoint = 'https://test2.hipperacademy.nl/index.php/clients/1096/pam/daily/2017-12-20/2018-1-1';
 // const CORSendpoint = 'https://cors-anywhere.herokuapp.com/https://test2.hipperacademy.nl/index.php/clients/1096/pam/daily/2017-12-20/2018-1-1';
-console.log('this is data', getData(epochURL));
+console.log('this is data', getData(dailyPAMURL));
