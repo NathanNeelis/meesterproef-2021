@@ -18,6 +18,9 @@
     /* fonts  */
     --fontRoboto: 'Roboto', sans-serif;
     /* weights: 100, 300, 500, 700 */
+
+    /* border radius  */
+    --default_radius: 1rem;
 }
 
 html {
@@ -110,7 +113,7 @@ header h2 {
     display: inline-block;
     padding: 2rem;
     scroll-snap-align: center;
-    border-radius: 1rem;
+    border-radius: var(--default_radius);
 }
 
 .dailyOverview {
@@ -212,7 +215,7 @@ header h2 {
     padding: 2rem;
     margin-right: 1rem;
     margin-top: 1rem;
-    border-radius: 1rem;
+    border-radius: var(--default_radius);
     text-decoration: none;
     color: var(--darkGrey);
 
@@ -405,4 +408,70 @@ footer {
     border: none;
     border-radius: .3rem;
     text-decoration: none;
+}
+
+
+/* LOG ACTIVITY  */
+.log_activity {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--blue);
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.log_activity h2 {
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 4rem;
+    color: white;
+}
+
+.sort_activity {
+    background: white;
+    width: 40vw;
+    height: 10rem;
+    border-radius: var(--default_radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.timer {
+    background: white;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.log_activity button {
+    padding: 1rem 4rem;
+    color: var(--orange);
+    background: white;
+    border: none;
+    border-radius: .3rem;
+}
+
+.minutes,
+.hours {
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+
+.show {
+    opacity: 1;
+}
+
+.hours::after,
+.minutes::after,
+.seconds::after {
+    content: " :";
 }

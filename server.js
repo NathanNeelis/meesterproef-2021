@@ -38,6 +38,8 @@ const loginpost = require('./routes/loginpost')
 const logout = require('./routes/logout')
 const info = require('./routes/info')
 const profile = require('./routes/profile')
+const logActivity = require('./routes/logActivity')
+const newActivity = require('./routes/postActivity')
 
 // Utils
 const userRedirectLogin = require('./utils/userRedirectLogin')
@@ -59,6 +61,7 @@ app.use(express.static(path.resolve("public")))
 // Routing
 app.get("/", userRedirectLogin, home)
     .get("/activities", userRedirectLogin, activities)
+    .get("/activities/:activity", logActivity)
     .get("/login", login)
     .get("/register", register)
     .get("/logout", logout)
@@ -67,6 +70,7 @@ app.get("/", userRedirectLogin, home)
 
 app.post("/register", newUser)
     .post("/login", loginpost)
+    .post("/activities/:activity", newActivity)
 
 app.listen(port, () => {
     console.log(`Server is working at http://localhost:${port}`)

@@ -168,6 +168,17 @@
 
 }
 
+.redirectLogin {
+    margin-top: 2rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: var(--darkGrey);
+}
+
+.redirectLogin a {
+    color: var(--orange);
+}
+
 .importantInfo {
     display: block;
     margin: 1rem 0;

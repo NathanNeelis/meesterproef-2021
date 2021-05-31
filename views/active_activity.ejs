@@ -1,0 +1,61 @@
+<%- include('includes/head.ejs'); %>
+
+
+<main>
+    <section class="log_activity">
+        <h2><%=activity %></h2>
+
+        <article class="sort_activity">
+            <!-- feedback for activity  -->
+            <p>icon van de activiteit</p>
+        </article>
+
+        <article class="timer">
+            <!-- <p>timer <span class="time">00:00:00</span></p> -->
+
+
+            <p>
+                <span class="hours">00</span>
+                <span class="minutes">00</span>
+                <span class="seconds">00</span>
+                <span class="miliSeconds">00</span>
+            </p>
+
+
+        </article>
+
+        <article>
+            <button class="Btn_start_activity">Start</button>
+            <button class="Btn_resume_activity">Hervat</button>
+            <button class="Btn_end_activity">Stop</button>
+            <button class="Btn_reset_activity">Reset</button>
+        </article>
+
+        <article class="activity_form">
+            <!-- timer  -->
+            <form action="/activities/<%=activity %>" class="a-form" id="new_activity_form" method="POST">
+
+                <!-- Sort activity  -->
+                <input type="hidden" id="sort_activity" name="sort_activity" value="<%=activity %>">
+
+                <!-- Start activity  -->
+                <input type="hidden" id="start_activity" name="start_activity">
+
+                <!-- duration activity in seconds -->
+                <input type="hidden" id="duration_activity" name="duration_activity">
+
+                <!-- End activity  -->
+                <input type="hidden" id="end_activity" name="end_activity">
+
+                <button type="submit" class="Btn_save_activity">Save</button>
+        </article>
+
+        <!-- button start / end  -->
+    </section>
+
+</main>
+
+
+<%- include('includes/nav_bottom.ejs'); %>
+
+<%- include('includes/footer.ejs'); %>
