@@ -1,10 +1,29 @@
 // Imports 
 const getData = require('../utils/getData');
 
+const mongo = require("mongodb");
+
+var db = null;
+var url = "mongodb+srv://" + process.env.DB_HOST;
+
+mongo.MongoClient.connect(
+    url, {
+        useUnifiedTopology: true,
+    },
+    function (err, client) {
+        if (err) {
+            throw err;
+        }
+
+        db = client.db(process.env.DB_NAME);
+    }
+);
+
 
 // export
 async function home(req, res) {
 
+    // STEP 1: Fetch all data
     // daily PAM values
     const dailyPAMURL = 'https://gist.githubusercontent.com/NathanNeelis/f83a294032223066bdddbd5ff37c9dc7/raw/4853849d9da46786b557a131937759bb16218dbc/pam_today'
 
@@ -16,6 +35,103 @@ async function home(req, res) {
 
     const currentDay = weeklyData[14] // This should be automated for the current day.
     const currentWeek = getCurrentWeek(weeklyData) // At the moment the PAM average of all the data plus 1
+
+
+    const defaultRawData = rawDailyData[14].scores
+    const rawDataArray = defaultRawData.match(/.{1,2}/g);
+
+
+
+    // STEP 2: find today's activities 
+    const data = await db.collection("Users").findOne({
+        email: req.session.user.user.email
+    });
+    const now = new Date()
+    const date = now.toISOString().slice(0, 10);
+
+    let filteredActivities = (dataToFilter) => {
+        let newArr = []
+        dataToFilter.activities.forEach((result) => {
+            if (result.date == date) {
+                newArr.push(result)
+            }
+        });
+        return newArr.reverse();
+    }
+
+    let activitiesToday = filteredActivities(data);
+
+
+    // STEP 3: create array of time each 15 minutes
+    // resource: https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript
+    const x = 15; //minutes interval
+    let times = []; // time array
+    let tt = 0; // start time
+
+    //loop to increment the time and push results in array
+    for (var i = 0; tt < 24 * 60; i++) {
+        var hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
+        var mm = (tt % 60); // getting minutes of the hour in 0-55 format
+        times[i] = ("0" + (hh % 24)).slice(-2) + ':' + ("0" + mm).slice(-2); // pushing data in array 
+        tt = tt + x;
+    }
+
+
+    // STEP 4: create object from 2 arrays (time + rawdata)
+    // resource https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
+    let rawDataObject = {};
+    times.forEach((time, i) => rawDataObject[time] = parseInt(rawDataArray[i], 10));
+
+
+
+
+    // STEP 5: calculate pam score
+    // resource: https://masteringjs.io/tutorials/fundamentals/filter-object
+
+    // STEP 5.1: Find the latest activity
+    const latestActivity = activitiesToday[0] // Yes this is [0] because I reversed the array
+
+    // STEP 5.2: Save the rawdataObjec as an array
+    const asArray = Object.entries(rawDataObject);
+
+    // STEP 5.3: filter the array -> If bigger then start time and smaller then end time of activity.
+    const inTimeFrame = asArray.filter(([key, value]) => (key >= latestActivity.activity.startTime_activity && key <= latestActivity.activity.endTime_activity));
+
+    // STEP 5.4: Reverd result back as an object
+    const rawPamScore = Object.fromEntries(inTimeFrame);
+
+    // STEP 5.5 Calculate total pamscore
+    // resource: https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
+    function sum(obj) {
+        var sum = 0;
+        for (var el in obj) {
+            if (obj.hasOwnProperty(el)) {
+                sum += parseFloat(obj[el]);
+            }
+        }
+        return sum;
+    }
+
+    let totalPamScoreActivity = sum(rawPamScore);
+
+
+    // STEP 6: Update pamScore in the activity in the database
+    // ATTENTION: CLEAR SITE DATA ON TESTING
+    db.collection('Users').updateOne({
+        email: req.session.user.user.email,
+        "activities.activity.startDate_activity": latestActivity.activity.startDate_activity,
+        "activities.activity.startTime_activity": latestActivity.activity.startTime_activity
+    }, {
+        $set: {
+            "activities.$.activity.pamScore": totalPamScoreActivity,
+        }
+    }, (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
+
+
 
     renderPage(weeklyData, rawDailyData, currentDay, currentWeek)
 
@@ -29,7 +145,8 @@ async function home(req, res) {
                 rawDailyData: rawDailyData,
                 currentDay: currentDay,
                 currentWeek: currentWeek,
-                user: user
+                user: user,
+                activitiesToday: activitiesToday
             });
         } else {
 

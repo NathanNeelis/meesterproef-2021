@@ -3,7 +3,6 @@ const logActivity = (req, res) => {
         const user = req.session.user.user
         const activity = req.params.activity
 
-        console.log('the activity is', activity)
         res.render('active_activity.ejs', {
             activity: activity
         });

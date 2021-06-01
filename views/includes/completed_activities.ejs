@@ -1,18 +1,19 @@
 <div class="activities_wrapper">
+
+
+    <% if (activitiesToday === undefined) { %>
+    <p>no recent activities</p>
+    <% } else if (activitiesToday.length <= 0) { %>
+    <p>no recent activities</p>
+    <% } else { %>
+    <!-- activity block  -->
+    <% for (let i = 0; i < activitiesToday.length; i++) { %>
     <a href="/activities/" class="activity_overview completed">
-        <p>Wandelen</p>
-        <p class="completed_score"> <span>1.5</span> punten</p>
+        <p><%= activitiesToday[i].activity.activity %></p>
+        <p class="completed_score"> <span><%= activitiesToday[i].activity.pamScore %></span> punten</p>
     </a>
-    <a href="/activities/" class="activity_overview completed">
-        <p>Boodschappen doen</p>
-        <p class="completed_score"> <span>3.5</span> punten</p>
-    </a>
-    <a href="/activities/" class="activity_overview completed">
-        <p>Stofzuigen</p>
-        <p class="completed_score"> <span>2</span> punten</p>
-    </a>
-    <a href="/activities/" class="activity_overview completed">
-        <p>Wandelen</p>
-        <p class="completed_score"> <span>5</span> punten</p>
-    </a>
+    <% } %>
+
+    <% } %>
+
 </div>

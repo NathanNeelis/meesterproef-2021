@@ -20,8 +20,11 @@ mongo.MongoClient.connect(
 // save activity to database
 function newActivity(req, res, next) {
     const username = req.session.user.user.email;
-    const date = new Date();
-    const time = Date.now();
+
+    const now = new Date()
+    const date = now.toISOString().slice(0, 10);
+    let time = now.getHours() + ":" + now.getMinutes()
+
 
     db.collection('Users').updateOne({
         email: username
@@ -32,9 +35,12 @@ function newActivity(req, res, next) {
                 time: time,
                 activity: {
                     activity: req.body.sort_activity,
-                    start_activity: req.body.start_activity,
-                    end_activity: req.body.end_activity,
-                    duration: req.body.duration_activity
+                    startDate_activity: req.body.startDate_activity,
+                    startTime_activity: req.body.startTime_activity,
+                    endDate_activity: req.body.endDate_activity,
+                    endTime_activity: req.body.endTime_activity,
+                    duration: req.body.duration_activity,
+                    pamScore: 0,
                 },
             },
         }

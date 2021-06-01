@@ -76,3 +76,18 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 ## Resources
 [fetch api authentication](https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch)  
 [manifest generator](https://www.simicart.com/manifest-generator.html/)  
+[timestamp js](https://flaviocopes.com/how-to-get-timestamp-javascript/)  
+[stopwatch](https://codepen.io/cathydutton/pen/GBcvo)  
+[Date object](https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript)  
+[Date object mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date)  
+[MongoDB Update one](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/)  
+[Date and time in Node](https://usefulangle.com/post/187/nodejs-get-date-time)  
+[MongoDB push](https://docs.mongodb.com/manual/reference/operator/update/push/)  
+[sum values in object](https://stackoverflow.com/questions/16449295/how-to-sum-the-values-of-a-javascript-object)  
+[filter object](https://masteringjs.io/tutorials/fundamentals/filter-object)  
+[adding 0 in clock if 1 digit](https://stackoverflow.com/questions/12278272/adding-0-if-clock-have-one-digit)  
+[split long string](https://stackoverflow.com/questions/6259515/how-can-i-split-a-string-into-segments-of-n-characters)  
+[date notation](https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript)  
+[Object from 2 arrays](https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays)  
+[Array of time strings](https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript)  
+

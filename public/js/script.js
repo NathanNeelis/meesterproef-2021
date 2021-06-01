@@ -2,15 +2,31 @@
 // Resource: https://codepen.io/cathydutton/pen/GBcvo
 const startActivity = document.querySelector(".Btn_start_activity")
 
-if (startActivity) {
-    // format timer
-    let hours = 00;
-    let minutes = 00;
-    let seconds = 00;
-    let miliSeconds = 00;
-    let Interval;
-    let activityDuration;
 
+// TESTING DATES 
+
+// var date = new Date();
+// date.setDate(date.getDate() - 1);
+
+// console.log('testdate', date.toISOString().slice(0, 10))
+
+// let startDate = "2021-05-31";
+// let date1 = new Date();
+// let date2 = new Date(startDate).toISOString().slice(0, 10);
+// let date3 = date1.toISOString().slice(0, 10);
+
+// let date4 = new Date()
+// date4.setDate(date4.getDate() - 1);
+
+// if (date4.toISOString().slice(0, 10) == date2) {
+//     console.log('true', date4.toISOString().slice(0, 10), date2)
+// } else {
+//     console.log('false')
+// }
+
+
+
+if (startActivity) {
     // Elements
     const appendmiliSeconds = document.querySelector(".miliSeconds")
     const appendSeconds = document.querySelector(".seconds")
@@ -22,10 +38,31 @@ if (startActivity) {
     const buttonStop = document.querySelector('.Btn_end_activity');
     const buttonReset = document.querySelector('.Btn_reset_activity');
 
-    const inputFormStartDate = document.getElementById('start_activity');
+    const inputFormStartDate = document.getElementById('startDate_activity');
+    const inputFormStartTime = document.getElementById('startTime_activity');
     const inputFormDuration = document.getElementById('duration_activity');
-    const inputFormEndDate = document.getElementById('end_activity');
+    const inputFormEndDate = document.getElementById('endDate_activity');
+    const inputFormEndTime = document.getElementById('endTime_activity');
     const buttonSave = document.querySelector('.Btn_save_activity');
+
+    // format timer
+    let hours = 00;
+    let minutes = 00;
+    let seconds = 00;
+    let miliSeconds = 00;
+    let Interval;
+    let activityDuration;
+
+
+
+    // if hours onder the 10 add a zero
+    if (totalHours.toString().length == 1) {
+        currentTotalHours = "0" + totalHours;
+    } else {
+        currentTotalHours = now.getHours()
+    }
+
+
 
 
     // TO DO
@@ -35,17 +72,37 @@ if (startActivity) {
     // Hide save until there is actual data preset
     // make timer pretty
 
+    // Take a very good look at the date object and how I save it in the database. DONE
+    // Not quite there yet. DONE
+
+    // create overview page  for redirect
+    // redirect overview page
+
+    // update overview/home page with activites that day/week?
+
 
     // start
     buttonStart.onclick = function () {
+        // current time
         const now = new Date()
-        // let startDate = {
-        //     date: now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear(),
-        //     time: now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds()
-        // }
+        let currentTotalMinutes;
+        let currentTotalHours;
+        let totalMinutes = now.getMinutes();
+        let totalHours = now.getHours();
+
+        // if minutes onder the 10 add a zero
+        if (totalMinutes.toString().length == 1) {
+            currentTotalMinutes = "0" + totalMinutes;
+        } else {
+            currentTotalMinutes = now.getMinutes()
+        }
+
+        let startDate = now.toISOString().slice(0, 10);
+        let startTime = currentTotalHours + ":" + currentTotalMinutes
 
         // save start date to form
-        inputFormStartDate.value = now;
+        inputFormStartDate.value = startDate;
+        inputFormStartTime.value = startTime;
 
         clearInterval(Interval);
         Interval = setInterval(startTimer, 10);
@@ -96,10 +153,27 @@ if (startActivity) {
     // save
     buttonSave.onclick = function (event) {
         event.preventDefault();
+
+        // current time
         const now = new Date()
+        let currentTotalMinutes;
+        let currentTotalHours;
+        let totalMinutes = now.getMinutes();
+        let totalHours = now.getHours();
+
+        // if minutes onder the 10 add a zero
+        if (totalMinutes.toString().length == 1) {
+            currentTotalMinutes = "0" + totalMinutes;
+        } else {
+            currentTotalMinutes = now.getMinutes()
+        }
+
+        let endDate = now.toISOString().slice(0, 10);
+        let endTime = currentTotalHours + ":" + currentTotalMinutes
 
         // add end date
-        inputFormEndDate.value = now;
+        inputFormEndDate.value = endDate;
+        inputFormEndTime.value = endTime;
 
         // submit form
         document.querySelector('.a-form').submit();
@@ -123,7 +197,6 @@ if (startActivity) {
 
         // seconds
         if (miliSeconds > 99) {
-            console.log("seconds");
             seconds++;
             appendSeconds.innerHTML = "0" + seconds;
             miliSeconds = 0;
@@ -136,7 +209,6 @@ if (startActivity) {
 
         // minutes
         if (seconds > 59) {
-            console.log("another minute added");
             appendMinutes.classList.add('show');
             minutes++;
             appendMinutes.innerHTML = "0" + minutes;
@@ -150,7 +222,6 @@ if (startActivity) {
 
         // hours
         if (minutes > 59) {
-            console.log("hours");
             appendHours.classList.add('show');
             hours++;
             appendHours.innerHTML = "0" + hours;
