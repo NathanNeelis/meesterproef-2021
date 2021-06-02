@@ -12,8 +12,8 @@ const session = require("express-session");
 
 require("dotenv").config();
 
-// const connectMDB = require('./config/mongodbConfig')
-// connectMDB();
+const connectMDB = require('./config/mongodbConfig')
+connectMDB();
 
 
 // Routes

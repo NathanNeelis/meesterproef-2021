@@ -2,6 +2,11 @@
 const getData = require('../utils/getData');
 const filteredActivities = require('../utils/filterActivities')
 
+// const User = require('../models/user');
+// let user = await User.findById(req.userID);
+// await user.save();
+
+
 // testing MongoDB config file
 // var db = null;
 // const connectMDB = require('../config/mongodbConfig')
@@ -55,7 +60,7 @@ async function home(req, res) {
 
 
     // STEP 2: find today's activities 
-    const data = await db.collection("Users").findOne({
+    const data = await db.collection('Users').findOne({
         email: req.session.user.user.email
     });
 
