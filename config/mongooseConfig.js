@@ -11,7 +11,7 @@ const connectMDB = async () => {
             useFindAndModify: false,
             useUnifiedTopology: true
         })
-        console.log('connected to the database 🧙‍♂️')
+        console.log('🐌 connected to the database 🐌 ')
     } catch (error) {
         console.log(`an error occurred: ${error}`)
         throw error
