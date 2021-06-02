@@ -5,19 +5,13 @@ async function activities(req, res) {
 
     function renderPage() {
         if (req.session.user) {
-            const user = req.session.user.user
-
             res.render("activities.ejs", {
-                user: user
+                user: req.session.user.user
             });
         } else {
-            res.render("activities.ejs", {
-
-            });
+            res.render("activities.ejs");
         }
-
     }
-
 }
 
 

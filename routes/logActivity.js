@@ -1,10 +1,7 @@
 const logActivity = (req, res) => {
     if (req.session.user) {
-        // const user = req.session.user.user
-        const activity = req.params.activity
-
         res.render('active_activity.ejs', {
-            activity: activity
+            activity: req.params.activity
         });
     } else {
         res.render('login.ejs', {
