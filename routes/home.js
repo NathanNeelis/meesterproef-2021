@@ -95,47 +95,50 @@ async function home(req, res) {
     const asArray = Object.entries(rawDataObject);
 
     // STEP 5.3: filter the array -> If bigger then start time and smaller then end time of activity.
-    const inTimeFrame = asArray.filter(([key, value]) => (key >= latestActivity.activity.startTime_activity && key <= latestActivity.activity.endTime_activity));
+    if (latestActivity) {
+        const inTimeFrame = asArray.filter(([key, value]) => (key >= latestActivity.activity.startTime_activity && key <= latestActivity.activity.endTime_activity));
 
-    // STEP 5.4: Reverd result back as an object
-    const rawPamScore = Object.fromEntries(inTimeFrame);
 
-    // STEP 5.5 Calculate total pamscore
-    // resource: https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
-    function sum(obj) {
-        var sum = 0;
-        for (var el in obj) {
-            if (obj.hasOwnProperty(el)) {
-                sum += parseFloat(obj[el]);
+
+        // STEP 5.4: Reverd result back as an object
+        const rawPamScore = Object.fromEntries(inTimeFrame);
+
+        // STEP 5.5 Calculate total pamscore
+        // resource: https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
+        function sum(obj) {
+            var sum = 0;
+            for (var el in obj) {
+                if (obj.hasOwnProperty(el)) {
+                    sum += parseFloat(obj[el]);
+                }
             }
+            return sum;
         }
-        return sum;
+
+        let totalPamScoreActivity = sum(rawPamScore);
+
+
+        // STEP 6: Update pamScore in the activity in the database
+        // ATTENTION: CLEAR SITE DATA ON TESTING
+        db.collection('Users').updateOne({
+            email: req.session.user.user.email,
+            "activities.activity.startDate_activity": latestActivity.activity.startDate_activity,
+            "activities.activity.startTime_activity": latestActivity.activity.startTime_activity
+        }, {
+            $set: {
+                "activities.$.activity.pamScore": totalPamScoreActivity,
+            }
+        }, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+
     }
 
-    let totalPamScoreActivity = sum(rawPamScore);
+    renderPage()
 
-
-    // STEP 6: Update pamScore in the activity in the database
-    // ATTENTION: CLEAR SITE DATA ON TESTING
-    db.collection('Users').updateOne({
-        email: req.session.user.user.email,
-        "activities.activity.startDate_activity": latestActivity.activity.startDate_activity,
-        "activities.activity.startTime_activity": latestActivity.activity.startTime_activity
-    }, {
-        $set: {
-            "activities.$.activity.pamScore": totalPamScoreActivity,
-        }
-    }, (err) => {
-        if (err) {
-            console.log(err);
-        }
-    });
-
-
-
-    renderPage(weeklyData, rawDailyData, currentDay, currentWeek)
-
-    function renderPage(weeklyData, rawDailyData, currentDay, currentWeek) {
+    function renderPage() {
 
         if (req.session.user) {
             const user = req.session.user.user

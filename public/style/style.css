@@ -431,7 +431,7 @@ footer {
 }
 
 .sort_activity {
-    background: white;
+    /* background: white; */
     width: 40vw;
     height: 10rem;
     border-radius: var(--default_radius);
@@ -439,6 +439,10 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
+}
+
+.sort_activity img {
+    height: 75%;
 }
 
 .timer {
@@ -452,6 +456,11 @@ footer {
     margin: 2rem 0;
 }
 
+.timer p {
+    font-size: 2.5rem;
+    color: var(--orange);
+}
+
 .log_activity button {
     padding: 1rem 4rem;
     color: var(--orange);
@@ -462,11 +471,37 @@ footer {
 
 .minutes,
 .hours {
+    display: none;
     opacity: 0;
     transition: opacity .5s ease;
 }
 
+.Btn_start_activity,
+.Btn_resume_activity,
+.Btn_end_activity,
+.Btn_reset_activity,
+.Btn_save_activity {
+    display: none;
+    opacity: 0;
+    transition: opacity .5s ease;
+    margin: 1rem;
+}
+
+.log_activity .Btn_end_activity {
+    color: white;
+    background-color: var(--orange);
+}
+
+.activity_form .Btn_save_activity {
+    padding: 1rem 10rem;
+    font-size: 1.5rem;
+    background-color: var(--orange);
+    color: white;
+    /* border: 2px solid var(--orange); */
+}
+
 .show {
+    display: initial;
     opacity: 1;
 }
 

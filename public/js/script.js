@@ -55,21 +55,11 @@ if (startActivity) {
 
 
 
-    // if hours onder the 10 add a zero
-    if (totalHours.toString().length == 1) {
-        currentTotalHours = "0" + totalHours;
-    } else {
-        currentTotalHours = now.getHours()
-    }
-
 
 
 
     // TO DO
-    // Hide resume button
-    // Hide start button and show resume button on start
-    // Hide stop until started
-    // Hide save until there is actual data preset
+    // Fix buttons DONE
     // make timer pretty
 
     // Take a very good look at the date object and how I save it in the database. DONE
@@ -97,12 +87,25 @@ if (startActivity) {
             currentTotalMinutes = now.getMinutes()
         }
 
+        // if hours onder the 10 add a zero
+        if (totalHours.toString().length == 1) {
+            currentTotalHours = "0" + totalHours;
+        } else {
+            currentTotalHours = now.getHours()
+        }
+
+
         let startDate = now.toISOString().slice(0, 10);
         let startTime = currentTotalHours + ":" + currentTotalMinutes
 
         // save start date to form
         inputFormStartDate.value = startDate;
         inputFormStartTime.value = startTime;
+
+        // show button
+        buttonStop.classList.add('show');
+
+        buttonStart.classList.remove('show');
 
         clearInterval(Interval);
         Interval = setInterval(startTimer, 10);
@@ -112,6 +115,11 @@ if (startActivity) {
     buttonResume.onclick = function () {
         clearInterval(Interval);
         Interval = setInterval(startTimer, 10);
+
+        // buttons
+        buttonReset.classList.remove('show');
+        buttonResume.classList.remove('show');
+        buttonStop.classList.add('show');
     }
 
 
@@ -123,6 +131,12 @@ if (startActivity) {
         activityDuration = seconds + (minutes * 60) + ((hours * 60) * 60);
 
         inputFormDuration.value = activityDuration // total duration activity in seconds
+
+        // buttons
+        buttonReset.classList.add('show');
+        buttonResume.classList.add('show');
+        buttonSave.classList.add('show');
+        buttonStop.classList.remove('show');
     }
 
     // reset
@@ -148,6 +162,13 @@ if (startActivity) {
         inputFormDuration.value = ''; // duration
         inputFormEndDate.value = '';
 
+        // buttons
+        buttonStart.classList.add('show');
+        buttonReset.classList.remove('show');
+        buttonResume.classList.remove('show');
+        buttonStop.classList.remove('show');
+        buttonSave.classList.remove('show');
+
     }
 
     // save
@@ -167,6 +188,15 @@ if (startActivity) {
         } else {
             currentTotalMinutes = now.getMinutes()
         }
+
+        // if hours onder the 10 add a zero
+        if (totalHours.toString().length == 1) {
+            currentTotalHours = "0" + totalHours;
+        } else {
+            currentTotalHours = now.getHours()
+        }
+
+
 
         let endDate = now.toISOString().slice(0, 10);
         let endTime = currentTotalHours + ":" + currentTotalMinutes
