@@ -13,17 +13,14 @@ mongo.MongoClient.connect(
         }
 
         db = client.db(process.env.DB_NAME);
-        // console.log("Connected correctly to MongoDB server");
     }
 );
 
 
 // register data to database
 function newUser(req, res, next) {
-    const username = req.body.signupMail;
-
     db.collection("Users").findOne({
-        email: username
+        email: req.body.signupMail
     }, (err, user) => {
         if (err) {
             console.log('MongoDB Error:' + err);

@@ -1,6 +1,4 @@
 <div class="activities_wrapper">
-
-
     <% if (activitiesToday === undefined) { %>
     <p>no recent activities</p>
     <% } else if (activitiesToday.length <= 0) { %>
@@ -8,7 +6,8 @@
     <% } else { %>
     <!-- activity block  -->
     <% for (let i = 0; i < activitiesToday.length; i++) { %>
-    <a href="/activities/" class="activity_overview completed">
+    <a href="/activities/<%= activitiesToday[i].activity.activity %>/<%= activitiesToday[i].activity.startDate_activity %><%= activitiesToday[i].activity.startTime_activity %>"
+        class="activity_overview completed">
         <p><%= activitiesToday[i].activity.activity %></p>
         <p class="completed_score"> <span><%= activitiesToday[i].activity.pamScore %></span> punten</p>
     </a>

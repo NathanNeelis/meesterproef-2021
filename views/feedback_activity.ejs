@@ -1,0 +1,50 @@
+<%- include('includes/head.ejs'); %>
+
+
+<main>
+    <section class="feedback_activity">
+
+        <!-- which activity  -->
+        <h2>Uitgevoerde activiteit: <%= foundActivity[0].activity.activity %></h2>
+
+        <dl>
+            <!-- start time  -->
+            <article>
+                <dt>Begin tijd:</dt>
+                <dd><%= foundActivity[0].activity.startTime_activity %></dd>
+            </article>
+
+            <!-- end time -->
+            <article>
+                <dt>Eind tijd:</dt>
+                <dd><%= foundActivity[0].activity.endTime_activity %></dd>
+            </article>
+
+            <!-- duration -->
+            <article>
+                <dt>Duur:</dt>
+                <dd><%= foundActivity[0].activity.duration %> seconden</dd>
+            </article>
+
+            <!-- behaalde score  -->
+            <article>
+                <dt>Punten behaald:</dt>
+                <dd><%= foundActivity[0].activity.pamScore %></dd>
+                <!-- some info about the pam score -->
+                <p>Het kan zijn dat uw behaalde punten later worden toegevoegd. Dit komt omdat het PAM aparaat eerst uw
+                    bewegingen moet registreren in de app.</p>
+            </article>
+
+        </dl>
+
+
+
+
+    </section>
+
+</main>
+
+
+<%- include('includes/nav_bottom.ejs'); %>
+
+<%- include('includes/footer.ejs'); %>

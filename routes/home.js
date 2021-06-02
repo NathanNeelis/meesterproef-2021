@@ -1,5 +1,6 @@
-// Imports 
+// Utils
 const getData = require('../utils/getData');
+const filteredActivities = require('../utils/filterActivities')
 
 const mongo = require("mongodb");
 
@@ -46,21 +47,9 @@ async function home(req, res) {
     const data = await db.collection("Users").findOne({
         email: req.session.user.user.email
     });
-    const now = new Date()
-    const date = now.toISOString().slice(0, 10);
 
-    let filteredActivities = (dataToFilter) => {
-        let newArr = []
-        dataToFilter.activities.forEach((result) => {
-            if (result.date == date) {
-                newArr.push(result)
-            }
-        });
-        return newArr.reverse();
-    }
-
+    // STEP 2.2 Filter activities on todays activties  -UTIL
     let activitiesToday = filteredActivities(data);
-
 
     // STEP 3: create array of time each 15 minutes
     // resource: https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript

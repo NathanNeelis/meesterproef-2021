@@ -19,20 +19,26 @@ mongo.MongoClient.connect(
 
 // save activity to database
 function newActivity(req, res, next) {
-    const username = req.session.user.user.email;
-
     const now = new Date()
     const date = now.toISOString().slice(0, 10);
-    let time = now.getHours() + ":" + now.getMinutes()
+    const activity = req.params.activity
+    let feedback;
 
+    if (req.body.startDate_activity && req.body.startTime_activity) {
+        feedback = req.body.startDate_activity + req.body.startTime_activity;
+    } else {
+        console.error('something went wrong gathering the data')
+        res.render("404.ejs", {
+            error: 'Er is helaas iets fout gegaan in het opslaan van de data van de activeit'
+        })
+    }
 
     db.collection('Users').updateOne({
-        email: username
+        email: req.session.user.user.email
     }, {
         $push: {
             activities: {
                 date: date,
-                time: time,
                 activity: {
                     activity: req.body.sort_activity,
                     startDate_activity: req.body.startDate_activity,
@@ -46,11 +52,11 @@ function newActivity(req, res, next) {
         }
     }, done);
 
-    function done(err, data) {
+    function done(err) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/"); // redirect to overview
+            res.redirect("/activities/" + activity + "/" + feedback); // redirect to overview
         }
     }
 }
