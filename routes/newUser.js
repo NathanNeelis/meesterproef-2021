@@ -1,21 +1,3 @@
-// const mongo = require("mongodb");
-
-// var db = null;
-// var url = "mongodb+srv://" + process.env.DB_HOST;
-
-// mongo.MongoClient.connect(
-//     url, {
-//         useUnifiedTopology: true,
-//     },
-//     function (err, client) {
-//         if (err) {
-//             throw err;
-//         }
-
-//         db = client.db(process.env.DB_NAME);
-//     }
-// );
-
 const User = require('../models/user');
 
 // register data to database

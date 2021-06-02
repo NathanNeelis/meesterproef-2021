@@ -3,6 +3,7 @@ function filteredActivities(dataToFilter) {
     const date = now.toISOString().slice(0, 10);
 
     let newArr = []
+
     dataToFilter.activities.forEach((result) => {
         if (result.date == date) {
             newArr.push(result)

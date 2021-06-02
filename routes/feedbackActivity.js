@@ -1,29 +1,13 @@
 // UTILS
 const findActivity = require('../utils/findActivitie')
-const mongo = require("mongodb");
-
-var db = null;
-var url = "mongodb+srv://" + process.env.DB_HOST;
-
-mongo.MongoClient.connect(
-    url, {
-        useUnifiedTopology: true,
-    },
-    function (err, client) {
-        if (err) {
-            throw err;
-        }
-
-        db = client.db(process.env.DB_NAME);
-    }
-);
+const User = require('../models/user');
 
 const feedbackActivity = async (req, res) => {
     if (req.session.user) {
         const feedback = req.params.feedback
 
         // STEP 1: Find the user data
-        const data = await db.collection("Users").findOne({
+        const data = await User.findOne({
             email: req.session.user.user.email
         });
 

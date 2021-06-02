@@ -1,40 +1,8 @@
 // Utils
 const getData = require('../utils/getData');
-const filteredActivities = require('../utils/filterActivities')
+const filterActivities = require('../utils/filterActivities')
 
-// const User = require('../models/user');
-// let user = await User.findById(req.userID);
-// await user.save();
-
-
-// testing MongoDB config file
-// var db = null;
-// const connectMDB = require('../config/mongodbConfig')
-// connectMDB();
-
-// console.log(db)
-// var db = client.db(process.env.DB_NAME);
-// var db = connectMDB();
-
-
-// original database connection
-const mongo = require("mongodb");
-
-var db = null;
-var url = "mongodb+srv://" + process.env.DB_HOST;
-
-mongo.MongoClient.connect(
-    url, {
-        useUnifiedTopology: true,
-    },
-    function (err, client) {
-        if (err) {
-            throw err;
-        }
-
-        db = client.db(process.env.DB_NAME);
-    }
-);
+const User = require('../models/user');
 
 
 // export
@@ -57,88 +25,88 @@ async function home(req, res) {
     const defaultRawData = rawDailyData[14].scores
     const rawDataArray = defaultRawData.match(/.{1,2}/g);
 
-
+    let activitiesToday; // Zero state
 
     // STEP 2: find today's activities 
-    const data = await db.collection('Users').findOne({
+    const data = await User.findOne({
         email: req.session.user.user.email
     });
 
-    // STEP 2.2 Filter activities on todays activties  -UTIL
-    let activitiesToday = filteredActivities(data);
 
-    // STEP 3: create array of time each 15 minutes
-    // resource: https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript
-    const x = 15; //minutes interval
-    let times = []; // time array
-    let tt = 0; // start time
+    // STEP 2.2 Check if there are activities in the data. 
+    // IF SO
+    // Filter activities on todays activties  -UTIL
+    if (data.activities) {
+        activitiesToday = filterActivities(data);
 
-    //loop to increment the time and push results in array
-    for (var i = 0; tt < 24 * 60; i++) {
-        var hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
-        var mm = (tt % 60); // getting minutes of the hour in 0-55 format
-        times[i] = ("0" + (hh % 24)).slice(-2) + ':' + ("0" + mm).slice(-2); // pushing data in array 
-        tt = tt + x;
-    }
+        // STEP 3: create array of time each 15 minutes
+        // resource: https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript
+        const x = 15; //minutes interval
+        let times = []; // time array
+        let tt = 0; // start time
 
-
-    // STEP 4: create object from 2 arrays (time + rawdata)
-    // resource https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
-    let rawDataObject = {};
-    times.forEach((time, i) => rawDataObject[time] = parseInt(rawDataArray[i], 10));
-
-
-
-
-    // STEP 5: calculate pam score
-    // resource: https://masteringjs.io/tutorials/fundamentals/filter-object
-
-    // STEP 5.1: Find the latest activity
-    const latestActivity = activitiesToday[0] // Yes this is [0] because I reversed the array
-
-    // STEP 5.2: Save the rawdataObjec as an array
-    const asArray = Object.entries(rawDataObject);
-
-    // STEP 5.3: filter the array -> If bigger then start time and smaller then end time of activity.
-    if (latestActivity) {
-        const inTimeFrame = asArray.filter(([key, value]) => (key >= latestActivity.activity.startTime_activity && key <= latestActivity.activity.endTime_activity));
-
-
-
-        // STEP 5.4: Reverd result back as an object
-        const rawPamScore = Object.fromEntries(inTimeFrame);
-
-        // STEP 5.5 Calculate total pamscore
-        // resource: https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
-        function sum(obj) {
-            var sum = 0;
-            for (var el in obj) {
-                if (obj.hasOwnProperty(el)) {
-                    sum += parseFloat(obj[el]);
-                }
-            }
-            return sum;
+        //loop to increment the time and push results in array
+        for (var i = 0; tt < 24 * 60; i++) {
+            var hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
+            var mm = (tt % 60); // getting minutes of the hour in 0-55 format
+            times[i] = ("0" + (hh % 24)).slice(-2) + ':' + ("0" + mm).slice(-2); // pushing data in array 
+            tt = tt + x;
         }
 
-        let totalPamScoreActivity = sum(rawPamScore);
+
+        // STEP 4: create object from 2 arrays (time + rawdata)
+        // resource https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
+        let rawDataObject = {};
+        times.forEach((time, i) => rawDataObject[time] = parseInt(rawDataArray[i], 10));
 
 
-        // STEP 6: Update pamScore in the activity in the database
-        // ATTENTION: CLEAR SITE DATA ON TESTING
-        db.collection('Users').updateOne({
-            email: req.session.user.user.email,
-            "activities.activity.startDate_activity": latestActivity.activity.startDate_activity,
-            "activities.activity.startTime_activity": latestActivity.activity.startTime_activity
-        }, {
-            $set: {
-                "activities.$.activity.pamScore": totalPamScoreActivity,
+        // STEP 5: calculate pam score
+        // resource: https://masteringjs.io/tutorials/fundamentals/filter-object
+
+        // STEP 5.1: Find the latest activity
+        const latestActivity = activitiesToday[0] // Yes this is [0] because I reversed the array
+
+        // STEP 5.2: Save the rawdataObjec as an array
+        const asArray = Object.entries(rawDataObject);
+
+        // STEP 5.3: filter the array -> If bigger then start time and smaller then end time of activity.
+        if (latestActivity) {
+            const inTimeFrame = asArray.filter(([key, value]) => (key >= latestActivity.activity.startTime_activity && key <= latestActivity.activity.endTime_activity));
+
+            // STEP 5.4: Reverd result back as an object
+            const rawPamScore = Object.fromEntries(inTimeFrame);
+
+            // STEP 5.5 Calculate total pamscore
+            // resource: https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
+            function sum(obj) {
+                var sum = 0;
+                for (var el in obj) {
+                    if (obj.hasOwnProperty(el)) {
+                        sum += parseFloat(obj[el]);
+                    }
+                }
+                return sum;
             }
-        }, (err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
 
+            let totalPamScoreActivity = sum(rawPamScore);
+
+
+            // STEP 6: Update pamScore in the activity in the database
+            // ATTENTION: CLEAR SITE DATA ON TESTING
+            User.updateOne({
+                email: req.session.user.user.email,
+                "activities.activity.startDate_activity": latestActivity.activity.startDate_activity,
+                "activities.activity.startTime_activity": latestActivity.activity.startTime_activity
+            }, {
+                $set: {
+                    "activities.$.activity.pamScore": totalPamScoreActivity,
+                }
+            }, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
     }
 
     renderPage()

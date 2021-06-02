@@ -90,4 +90,10 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 [date notation](https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript)  
 [Object from 2 arrays](https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays)  
 [Array of time strings](https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript)  
+[Mongoose password auth](https://www.mongodb.com/blog/post/password-authentication-with-mongoose-part-1)  
+[Mongoose object error](https://stackoverflow.com/questions/32633561/cant-access-object-property-of-a-mongoose-response)  
+[Mongoose docs](https://mongoosejs.com/docs/guide.html)  
+[how to mongoose](https://zellwk.com/blog/local-mongodb/#:~:text=To%20connect%20to%20your%20local,databases%20in%20your%20local%20MongoDB.)  
+[Janno Mongoose example](https://github.com/TuriGuilano/be_example_repo/blob/main/app.js)  
+
 
