@@ -59,7 +59,6 @@ async function home(req, res) {
         let rawDataObject = {};
         times.forEach((time, i) => rawDataObject[time] = parseInt(rawDataArray[i], 10));
 
-
         // STEP 5: calculate pam score
         // resource: https://masteringjs.io/tutorials/fundamentals/filter-object
 

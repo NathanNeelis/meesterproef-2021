@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+let url = "mongodb+srv://" + process.env.DB_HOST + "/" + process.env.DB_NAME;
 
-var url = "mongodb+srv://" + process.env.DB_HOST + "/" + process.env.DB_NAME;
-
+// Resource: Help by Janno
+// https://github.com/TuriGuilano/be_example_repo/blob/main/config/mongoose.js
 const connectMDB = async () => {
     try {
         await mongoose.connect(url, {

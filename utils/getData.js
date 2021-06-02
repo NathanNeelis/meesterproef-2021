@@ -1,24 +1,16 @@
 const fetch = require('node-fetch');
 
 async function getData(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
 
-    // let username = 'nathan.neelis@hva.nl'
-    // let password = ''
-    // let headers = new Headers();
-    // headers.set('Authorization', 'Basic ' + base64.encode(username + ":" + password));
+        return data;
+    } catch (error) {
+        console.log(`an error occurred: ${error}`)
+        throw error
+    }
 
-
-    const response = await fetch(url);
-
-    // const response = await fetch(url, {
-    //     method: 'GET',
-    //     headers: headers,
-    //     //credentials: 'user:passwd'
-    // });
-    // console.log(response)
-    const data = await response.json();
-
-    return data;
 }
 
 module.exports = getData;
