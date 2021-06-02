@@ -1,17 +1,16 @@
 require("dotenv").config();
 
 const port = process.env.PORT || 2000
-
 const express = require('express');
 const bodyParser = require("body-parser"); // load body parser for http requests
+const compression = require('compression'); // compression pages
+const path = require("path"); // path for easy paths
+const app = express(); // save express to app variable
+const session = require("express-session"); // sessions for login cookie
 
-const compression = require('compression');
-const path = require("path");
-const app = express();
-const session = require("express-session");
-
-const connectMDB = require('./config/mongodbConfig')
-connectMDB();
+// database connection
+const connectMDB = require('./config/mongooseConfig') // load Mongoose config
+connectMDB(); // connect with database
 
 // Routes
 const home = require('./routes/home');
@@ -31,7 +30,7 @@ const savedActivity = require('./routes/savedActivity')
 // Utils
 const userRedirectLogin = require('./utils/userRedirectLogin')
 
-// EXPRESS ROUTeS
+// Static path, compression, bodyparser and sessions
 app.use(express.static(path.resolve("public")))
     .use(compression())
     .use(
