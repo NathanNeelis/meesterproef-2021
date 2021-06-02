@@ -2,31 +2,19 @@ const port = process.env.PORT || 2000
 
 const express = require('express');
 const bodyParser = require("body-parser"); // load body parser for http requests
-const mongo = require("mongodb");
+
 const compression = require('compression');
 const path = require("path");
 const app = express();
 const session = require("express-session");
 
+
+
 require("dotenv").config();
 
-// database connection
-var db = null;
-var url = "mongodb+srv://" + process.env.DB_HOST;
+// const connectMDB = require('./config/mongodbConfig')
+// connectMDB();
 
-mongo.MongoClient.connect(
-    url, {
-        useUnifiedTopology: true,
-    },
-    function (err, client) {
-        if (err) {
-            throw err;
-        }
-
-        db = client.db(process.env.DB_NAME);
-        console.log("Connected correctly to MongoDB server");
-    }
-);
 
 // Routes
 const home = require('./routes/home');
@@ -41,6 +29,7 @@ const profile = require('./routes/profile')
 const logActivity = require('./routes/logActivity')
 const newActivity = require('./routes/postActivity')
 const feedbackActivity = require('./routes/feedbackActivity')
+const savedActivity = require('./routes/savedActivity')
 
 // Utils
 const userRedirectLogin = require('./utils/userRedirectLogin')
@@ -64,6 +53,7 @@ app.get("/", userRedirectLogin, home)
     .get("/activities", userRedirectLogin, activities)
     .get("/activities/:activity", logActivity)
     .get("/activities/:activity/:feedback", feedbackActivity)
+    .get("/activities/saved/:activity/:feedback", savedActivity)
     .get("/login", login)
     .get("/register", register)
     .get("/logout", logout)

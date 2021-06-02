@@ -14,50 +14,22 @@
 
 <main>
 
-    <section class="personal_overview">
-        <h2>Je persoonlijke overzicht</h2>
-        <article class="overview_wrapper">
-            <a href="/">Overzicht activiteiten</a>
-            <a href="/">Doelen overzicht</a>
+    <section>
+        <article class="activities">
+            <h2>Donderdag 6 juni</h2>
+            <div class="activities_wrapper">
+                <ul class="activity_overview">
+                    <li>
+                        <p>Voeg een activiteit toe</p>
+                        <img src="images/add.svg" alt="icon walking">
+                    </li>
+                </ul>
+            </div>
         </article>
 
-    </section>
 
 
-    <!-- COMPLETED ACTIVITIES TODAY -->
-    <!-- TODO: Zero state  -->
-    <section class="activities">
-        <h2>Je meest recente activiteiten</h2>
-        <p>to be updated in code</p>
 
-        <div class="tst">
-            <a href="#" class="overviewBtn">overzicht alle activiteiten</a>
-        </div>
-
-    </section>
-
-
-    <!-- LIGHT ACTIVITIES  -->
-    <section class="activities">
-        <h2>Wat voor lichte activiteiten kan je doen?</h2>
-        <%- include('includes/light_activities.ejs'); %>
-    </section>
-
-    <!-- MEDIUM ACTIVITIES  -->
-    <section class="activities">
-        <h2>Een volgende stap? Doe een medium activiteit</h2>
-        <%- include('includes/medium_activities.ejs'); %>
-    </section>
-
-    <!-- HEAVY ACTIVITIES  -->
-    <section class="activities">
-        <h2>Voel jij je helemaal goed? Probeer een zware activiteit</h2>
-        <%- include('includes/heavy_activities.ejs'); %>
-    </section>
-
-    <section class="achievments activities">
-        <h2>Uitgelichte prestaties</h2>
-    </section>
 </main>
 
 <footer>

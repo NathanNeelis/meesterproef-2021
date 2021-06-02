@@ -56,7 +56,7 @@ function newActivity(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/activities/" + activity + "/" + feedback); // redirect to overview
+            res.redirect("/activities/saved/" + activity + "/" + feedback); // redirect to overview
         }
     }
 }

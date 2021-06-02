@@ -2,6 +2,17 @@
 const getData = require('../utils/getData');
 const filteredActivities = require('../utils/filterActivities')
 
+// testing MongoDB config file
+// var db = null;
+// const connectMDB = require('../config/mongodbConfig')
+// connectMDB();
+
+// console.log(db)
+// var db = client.db(process.env.DB_NAME);
+// var db = connectMDB();
+
+
+// original database connection
 const mongo = require("mongodb");
 
 var db = null;

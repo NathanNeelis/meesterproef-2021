@@ -30,7 +30,7 @@ const feedbackActivity = async (req, res) => {
         // STEP 2: Find the activity
         const foundActivity = findActivity(feedback, data);
 
-        res.render('activity_detailpage.ejs', {
+        res.render('feedback_activity.ejs', {
             foundActivity: foundActivity
         });
     } else {

@@ -3,17 +3,21 @@
 
 <main>
     <section class="activity_done">
-
         <!-- which activity  -->
-        <h2>Je heb een activiteit voltooid</h2>
-
-        <!-- resource: https://all-free-download.com/free-vector/download/lifestyle_painting_happy_man_mountain_climbing_activities_icons_6836492_download.html  -->
-        <img src="images/saved_activity.svg" alt="Man op topje van een berg, blij dat hij zijn doel heeft behaald">
-
+        <article>
+            <h2><%= foundActivity[0].activity.activity %></h2>
+            <img src="images/<%= foundActivity[0].activity.activity %>_white.svg" class="icon_activity_done" alt="">
+        </article>
     </section>
     <section class="feedback_activity">
-        <h3><%= foundActivity[0].activity.activity %></h3>
+        <h3 class="feedback_activity_date"><%= foundActivity[0].activity.activity %></h3>
         <dl>
+            <!-- start time  -->
+            <article>
+                <dt>Datum:</dt>
+                <dd><%= foundActivity[0].activity.startDate_activity %></dd>
+            </article>
+
             <!-- start time  -->
             <article>
                 <dt>Begin tijd:</dt>

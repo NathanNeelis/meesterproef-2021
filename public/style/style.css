@@ -510,3 +510,97 @@ footer {
 .seconds::after {
     content: " :";
 }
+
+
+/* DETAIL PAGE ACTIVITY  */
+.activity_done {
+    /* background-color: var(--blue); */
+    position: relative;
+}
+
+.activity_done h2 {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 3rem;
+    color: white;
+    background-color: var(--blue);
+    /* width: 100vw; */
+
+}
+
+.activity_done img {
+    display: block;
+    margin-bottom: 2rem;
+    /* position: absolute; */
+}
+
+.activity_done article {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100vw;
+    background-color: var(--blue);
+}
+
+.icon_activity_done {
+    height: 3rem;
+    padding: 0 1rem .5rem 1rem;
+}
+
+
+.feedback_activity {
+    background-color: white;
+    color: var(--darkGrey);
+    width: 100vw;
+}
+
+.feedback_activity dl {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feedback_activity dt {
+    padding: .3rem;
+}
+
+.feedback_activity dd {
+    padding: .3rem;
+    color: var(--orange);
+}
+
+.feedback_activity article {
+    /* padding: 1rem 0; */
+    margin: 1rem 0 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+
+
+.feedback_activity h3 {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--blue);
+}
+
+.feedback_activity_date {
+    margin-top: 5rem;
+}
+
+.feedback_activity p {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 300;
+    padding-top: 2rem;
+}
