@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const port = process.env.PORT || 2000
 
 const express = require('express');
@@ -8,13 +10,8 @@ const path = require("path");
 const app = express();
 const session = require("express-session");
 
-
-
-require("dotenv").config();
-
 const connectMDB = require('./config/mongodbConfig')
 connectMDB();
-
 
 // Routes
 const home = require('./routes/home');
