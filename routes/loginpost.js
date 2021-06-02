@@ -1,31 +1,9 @@
-const mongo = require("mongodb");
+const User = require('../models/user');
 
-var db = null;
-var url = "mongodb+srv://" + process.env.DB_HOST;
-
-mongo.MongoClient.connect(
-    url, {
-        useUnifiedTopology: true,
-    },
-    function (err, client) {
-        if (err) {
-            throw err;
-        }
-
-        db = client.db(process.env.DB_NAME);
-        // console.log("Connected correctly to MongoDB server");
-    }
-);
-
-
-// logs in a user and gives it a session
-function loginpost(req, res) {
-    const username = req.body.loginEmail;
-    const password = req.body.loginPassword
-
+const loginpost = (req, res) => {
     const findUser = () => {
-        db.collection("Users").findOne({
-            email: username
+        User.findOne({
+            email: req.body.loginEmail
         }, (err, user) => {
             if (err) {
                 console.log('MongoDB Error:' + err);
@@ -33,34 +11,38 @@ function loginpost(req, res) {
                 checkPassword(user);
             } else {
                 res.render('login.ejs', {
-
+                    error: true,
+                    email: req.body.loginEmail
                 });
             }
         });
     };
 
     const checkPassword = (user) => {
-        if (password === user.password) {
-            req.session.sessionID = user._id;
-            req.session.user = {
-                user: user
+        user.comparePassword(req.body.loginPassword, (err, matches) => {
+            if (err) {
+                console.log(err);
+            } else if (matches) {
+                req.session.sessionID = user._id;
+                req.session.user = {
+                    user: user
+                }
+                res.redirect('/');
+            } else if (!matches) {
+                res.render('login.ejs', {
+                    error: true,
+                    email: req.body.loginEmail
+                });
             }
-            res.redirect('/');
-        } else {
-            res.render('login.ejs', {
-                error: true,
-                email: username
-            });
-
-        };
-    }
+        });
+    };
 
     if (req.body.loginEmail && req.body.loginPassword) {
         findUser();
     } else {
         res.render('login.ejs', {
             error: true,
-            email: username
+            email: req.body.loginEmail
         });
     }
 };

@@ -1,21 +1,4 @@
-const mongo = require("mongodb");
-
-var db = null;
-var url = "mongodb+srv://" + process.env.DB_HOST;
-
-mongo.MongoClient.connect(
-    url, {
-        useUnifiedTopology: true,
-    },
-    function (err, client) {
-        if (err) {
-            throw err;
-        }
-
-        db = client.db(process.env.DB_NAME);
-    }
-);
-
+const User = require('../models/user');
 
 // save activity to database
 function newActivity(req, res, next) {
@@ -33,7 +16,7 @@ function newActivity(req, res, next) {
         })
     }
 
-    db.collection('Users').updateOne({
+    User.updateOne({
         email: req.session.user.user.email
     }, {
         $push: {
