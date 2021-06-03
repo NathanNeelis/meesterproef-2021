@@ -15,18 +15,18 @@
 <main>
 
     <section>
+        <% for (let i = 0; i < dates.length; i++) { %>
         <article class="activities">
-            <h2>Donderdag 6 juni</h2>
-            <div class="activities_wrapper">
-                <ul class="activity_overview">
-                    <li>
-                        <p>Voeg een activiteit toe</p>
-                        <img src="images/add.svg" alt="icon walking">
-                    </li>
-                </ul>
-            </div>
+            <h2><%= dates[i] %></h2>
+            <ul class="activities_wrapper">
+                <li class="activity_overview">
+                    <p>Voeg een activiteit toe</p>
+                    <img src="images/add.svg" alt="icon walking">
+                </li>
+            </ul>
         </article>
-
+        <% } %>
+    </section>
 
 
 

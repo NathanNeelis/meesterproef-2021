@@ -2,30 +2,6 @@
 // Resource: https://codepen.io/cathydutton/pen/GBcvo
 const startActivity = document.querySelector(".Btn_start_activity")
 
-
-// TESTING DATES 
-
-// var date = new Date();
-// date.setDate(date.getDate() - 1);
-
-// console.log('testdate', date.toISOString().slice(0, 10))
-
-// let startDate = "2021-05-31";
-// let date1 = new Date();
-// let date2 = new Date(startDate).toISOString().slice(0, 10);
-// let date3 = date1.toISOString().slice(0, 10);
-
-// let date4 = new Date()
-// date4.setDate(date4.getDate() - 1);
-
-// if (date4.toISOString().slice(0, 10) == date2) {
-//     console.log('true', date4.toISOString().slice(0, 10), date2)
-// } else {
-//     console.log('false')
-// }
-
-
-
 if (startActivity) {
     // Elements
     const appendmiliSeconds = document.querySelector(".miliSeconds")
