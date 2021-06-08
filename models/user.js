@@ -98,6 +98,47 @@ const userSchema = new mongoose.Schema({
             }
         }
 
+    },
+    planned_activities: {
+        type: Object,
+        required: false,
+        date: {
+            type: String,
+            required: false,
+        },
+        activities: {
+            type: Object,
+            required: false,
+
+            wandelen: {
+                type: String,
+                required: false,
+            },
+            boodschappen: {
+                type: String,
+                required: false,
+            },
+            stofzuigen: {
+                type: String,
+                required: false,
+            },
+            tuinieren: {
+                type: String,
+                required: false,
+            },
+            fietsen: {
+                type: String,
+                required: false,
+            },
+            oefeningen: {
+                type: String,
+                required: false,
+            },
+            overige: {
+                type: String,
+                required: false,
+            },
+        }
     }
 })
 

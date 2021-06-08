@@ -26,6 +26,7 @@ const logActivity = require('./routes/logActivity')
 const newActivity = require('./routes/postActivity')
 const feedbackActivity = require('./routes/feedbackActivity')
 const savedActivity = require('./routes/savedActivity')
+const planActivities = require('./routes/planActivities')
 
 // Utils
 const userRedirectLogin = require('./utils/userRedirectLogin')
@@ -58,7 +59,9 @@ app.get("/", userRedirectLogin, home)
 
 app.post("/register", newUser)
     .post("/login", loginpost)
+    .post("/activities", planActivities)
     .post("/activities/:activity", newActivity)
+
 
 app.listen(port, () => {
     console.log(`Server is working at http://localhost:${port}`)

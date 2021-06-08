@@ -52,21 +52,35 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 
 * [x] Create Database
 * [x] Save users in database  
-* [ ] save activities in database each day  
-* [ ] save the pam data in the database  
+* [x] save activities in database each day  
+* [x] save the pam data in the database  
 * [x] Make a login system   
-* [ ] Start activity  
-* [ ] Start an activity for a specific time    
-* [ ] Create an activity for this timeslot in the database  
-* [ ] Validate Activity  
-* [ ] Validate this activity with the PAM raw data  
-* [ ] Calculate the PAM score during this activity from raw data  
-* [ ] Add PAM score to the completed activity in the app  
-* [ ] Weekly / daily goal  
-* [ ] which week is not now?  
-* [ ] What is the avarage PAM score of last week?  
-* [ ] Base the new daily / weekly goals on last weeks data?  
-* [ ] Or save the PAM score with the user in the database and when the user completes the daily goal seven times, the daily goal gets upgraded by 1?  
+* [x] Start activity  
+* [x] Start an activity for a specific time    
+* [x] Create an activity for this timeslot in the database  
+* [x] Validate Activity  
+* [x] Validate this activity with the PAM raw data  
+* [x] Calculate the PAM score during this activity from raw data  
+* [x] Add PAM score to the completed activity in the app  
+* [ ] Plan activities form
+* [ ] Planned activities to database
+* [ ] Planned activities from database in overview
+* [ ] Add todays planned activities to homepage
+* [ ] Add CTA to activity feedback pages
+
+* [ ] Animation dag en week doel
+* [ ] Responsive
+* [ ] Dagdoel instellen
+* [ ] Overzicht dagdoelen
+* [ ] Overzicht activiteiten
+* [ ] Feedback activiteit: hoe ging het?
+* [ ] Pijltjes bij verticale scroll
+
+* [ ] Activiteit toevoegen - niet live
+* [ ] Menu weg op activiteiten
+* [ ] Close button op activiteit
+* [ ] Add motivators like 10/7 score = party party  
+
 
 
 ## License
@@ -95,5 +109,7 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 [Mongoose docs](https://mongoosejs.com/docs/guide.html)  
 [how to mongoose](https://zellwk.com/blog/local-mongodb/#:~:text=To%20connect%20to%20your%20local,databases%20in%20your%20local%20MongoDB.)  
 [Janno Mongoose example](https://github.com/TuriGuilano/be_example_repo/blob/main/app.js)  
+[date format ddmmyyyy](https://stackoverflow.com/questions/12409299/how-to-get-current-formatted-date-dd-mm-yyyy-in-javascript-and-append-it-to-an-i)  
+[date object](https://www.w3resource.com/javascript/object-property-method/date-getDate.php)  
 
 

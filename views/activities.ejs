@@ -4,28 +4,486 @@
     <%- include('includes/header_logo.ejs'); %>
     <%- include('includes/header_title_activities.ejs'); %>
 
-    <% if (user) { %>
-    <a href="/logout"> logout</a>
-    <% } else { %>
-    <a href="/login"> login</a>
-    <% } %>
-
 </header>
 
 <main>
 
-    <section>
+    <section class="plan_activities">
         <% for (let i = 0; i < dates.length; i++) { %>
-        <article class="activities">
+        <article class="new_activities">
+
+
             <h2><%= dates[i] %></h2>
-            <ul class="activities_wrapper">
-                <li class="activity_overview">
-                    <p>Voeg een activiteit toe</p>
-                    <img src="images/add.svg" alt="icon walking">
+            <ul class="new_activities_wrapper">
+
+
+
+                <li class="new_activity_overview" data-date="<%= rawDates[i] %>">
+                    <p class="add_activity_btn">Voeg een activiteit toe</p>
+                    <img src="images/add.svg" alt="icon walking" class="add_activity_img">
+
+                    <form action="/activities" method="POST" class="pa-form" id="plan_activity_form_<%= rawDates[i] %>">
+                        <div class="close_form">
+                            <img src="images/close.svg" alt="close icon">
+                            <p>close</p>
+                        </div>
+                        <legend>Selecteer activiteiten</legend>
+                        <p class="multipleChoice">meerdere keuzes mogelijk</p>
+
+                        <!-- Input fields get made in client side -->
+                        <div class="checkbox_wrapper">
+
+                        </div>
+                        <button form="plan_activity_form_<%= rawDates[i] %>" type="submit" class="addBtn">
+                            Voeg toe
+                        </button>
+                    </form>
+
                 </li>
+
+                <!-- DAY 1-->
+                <% if (planDayOne[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDayOne[0].date) { %>
+
+                <% if (planDayOne[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayOne[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayOne[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayOne[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayOne[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayOne[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayOne[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+
+                <% } %>
+
+
+                <% } %>
+
+
+                <!-- DAY 2-->
+                <% if (planDayTwo[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDayTwo[0].date) { %>
+
+                <% if (planDayTwo[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayTwo[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayTwo[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayTwo[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayTwo[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayTwo[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayTwo[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+
+                <% } %>
+
+
+                <% } %>
+
+
+                <!-- DAY 3 -->
+                <% if (planDayThree[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDayThree[0].date) { %>
+
+                <% if (planDayThree[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayThree[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayThree[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayThree[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayThree[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayThree[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayThree[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+
+                <% } %>
+
+
+                <% } %>
+
+
+                <!-- DAY 4 -->
+                <% if (planDayFour[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDayFour[0].date) { %>
+                <% if (planDayFour[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFour[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFour[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFour[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFour[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFour[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFour[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+                <% } %>
+                <% } %>
+
+
+
+                <!-- DAY 5 -->
+                <% if (planDayFive[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDayFive[0].date) { %>
+                <% if (planDayFive[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFive[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFive[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFive[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFive[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFive[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDayFive[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+                <% } %>
+                <% } %>
+
+
+
+                <!-- DAY 6 -->
+                <% if (planDaySix[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDaySix[0].date) { %>
+                <% if (planDaySix[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySix[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySix[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySix[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySix[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySix[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySix[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+                <% } %>
+                <% } %>
+
+
+
+                <!-- DAY 7 -->
+                <% if (planDaySeven[0] == undefined) { %>
+                <!-- <h2>do nothing</h2> -->
+                <% } else { %>
+                <% if (rawDates[i] == planDaySeven[0].date) { %>
+                <% if (planDaySeven[0].activities.wandelen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Wandelen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySeven[0].activities.boodschappen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Boodschappen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySeven[0].activities.stofzuigen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Stofzuigen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySeven[0].activities.tuinieren == 'on') { %>
+                <li class="activity_overview">
+                    <p>Tuinieren</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySeven[0].activities.fietsen == 'on') { %>
+                <li class="activity_overview">
+                    <p>fietsen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySeven[0].activities.oefeningen == 'on') { %>
+                <li class="activity_overview">
+                    <p>Ergo/fysio oefeningen</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+                <% if (planDaySeven[0].activities.overige == 'on') { %>
+                <li class="activity_overview">
+                    <p>Overige</p>
+                    <img src="images/walking.svg" alt="icon walking">
+                </li>
+                <% } %>
+
+
+                <% }  else { %>
+                <!-- <h2> no data</h2> -->
+                <% } %>
+                <% } %>
+
+
             </ul>
         </article>
         <% } %>
+
     </section>
 
 
