@@ -62,9 +62,9 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 * [x] Validate this activity with the PAM raw data  
 * [x] Calculate the PAM score during this activity from raw data  
 * [x] Add PAM score to the completed activity in the app  
-* [ ] Plan activities form
-* [ ] Planned activities to database
-* [ ] Planned activities from database in overview
+* [x] Plan activities form
+* [x] Planned activities to database
+* [x] Planned activities from database in overview
 * [ ] Add todays planned activities to homepage
 * [ ] Add CTA to activity feedback pages
 
@@ -111,5 +111,11 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 [Janno Mongoose example](https://github.com/TuriGuilano/be_example_repo/blob/main/app.js)  
 [date format ddmmyyyy](https://stackoverflow.com/questions/12409299/how-to-get-current-formatted-date-dd-mm-yyyy-in-javascript-and-append-it-to-an-i)  
 [date object](https://www.w3resource.com/javascript/object-property-method/date-getDate.php)  
+[update variable](https://css-tricks.com/updating-a-css-variable-with-javascript/)  
+[conic gradient 1](https://www.youtube.com/watch?v=baorOUVPF-I)  
+[conic gradient 2](https://www.youtube.com/watch?v=_SubPYPtJO4)  
+[conic gradient 3](https://css-tricks.com/using-conic-gradients-css-variables-create-doughnut-chart-output-range-input/)  
+[animate conic gradient](https://css-tricks.com/the-state-of-changing-gradients-with-css-transitions-and-animations/)  
+[calculate total with reduce](https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers)
 
 

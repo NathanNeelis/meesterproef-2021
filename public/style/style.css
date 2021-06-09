@@ -21,6 +21,10 @@
 
     /* border radius  */
     --default_radius: 1rem;
+
+    /* goal percentages  */
+    --daily_percent: 90%;
+    --weekly_percent: 30%;
 }
 
 html {
@@ -84,32 +88,35 @@ header h2 {
 
 
 /* Data overview  */
-.scroll-container {
-    overflow-x: auto;
+.dataOverview {
     width: 80vw;
-    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
     scroll-snap-type: x mandatory;
     margin: 2rem auto;
     -webkit-overflow-scrolling: touch;
 }
 
-.scroll-container::-webkit-scrollbar {
+.dataOverview::-webkit-scrollbar {
     width: 5px;
 }
 
-.scroll-container::-webkit-scrollbar-thumb {
+.dataOverview::-webkit-scrollbar-thumb {
     background: var(--orange);
     border-top: 8px solid white;
 }
 
-.scroll-container::-webkit-scrollbar-track {
+.dataOverview::-webkit-scrollbar-track {
     background: white;
 }
 
 .overview {
     background-color: var(--lightGrey);
-    width: 80vw;
-    /* height: 40rem; */
+    min-width: 80vw;
+    min-height: 18rem;
     display: inline-block;
     padding: 2rem;
     scroll-snap-align: center;
@@ -127,30 +134,86 @@ header h2 {
     margin-top: 2rem;
 }
 
-.dailyScore {
-    width: 50%;
-    /* background: yellow; */
+
+/* DAILY GOAL CHART */
+.dailygoal,
+.weeklygoal {
+    width: 10rem;
+    height: 10rem;
+
+    /* variables c0 pos and c1 are made in javascript  */
+    background: conic-gradient(var(--c0) var(--pos, 0%), var(--c1) 0);
+    border-radius: 50%;
+    position: relative;
+
+    animation: 0s 1;
+    animation-duration: 2s, 1s;
+    animation-timing-function: steps(1), ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.dailygoal {
+    animation-name: c0, posDaily;
+}
+
+.weeklygoal {
+    animation-name: c0, posWeekly;
+}
+
+@keyframes posDaily {
+    to {
+        --pos: var(--daily_percent);
+    }
+}
+
+@keyframes posWeekly {
+    to {
+        --pos: var(--weekly_percent);
+    }
+}
+
+@keyframes c0 {
+    50% {
+        --c0: #ff6f00;
+    }
 }
 
 
-.value {
+
+.dailygoal::before,
+.weeklygoal::before {
+    content: '';
+    width: 7.5rem;
+    height: 7.5rem;
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    background: var(--lightGrey);
+    border-radius: 50%;
+}
+
+.dailyValue,
+.weeklyValue {
     width: 10rem;
     height: 10rem;
-    border: 3px solid var(--orange);
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    font-weight: 300;
 }
+
+/* END PIE CHART  */
 
 
 .activityOverview {
     width: 50%;
-    /* background: lightgreen; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: flex-start; */
 }
 
 .activity {
@@ -273,99 +336,6 @@ footer {
     margin-bottom: 10rem;
 }
 
-
-
-
-/* TESTING PROGRESS BAR  */
-/* EXAMPLE NOT YET HOW I WANT IT  */
-.progress {
-    width: 10rem;
-    height: 10rem;
-    font-size: 3rem;
-    color: var(--orange);
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    background: var(--lightGrey);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.weekAvarage {
-    font-size: 1.5rem;
-    width: 75%;
-    /* background: yellow; */
-    border-top: 1px solid var(--orange);
-}
-
-.progress .title {
-    position: relative;
-    z-index: 100;
-}
-
-.progress .overlay {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: var(--lightGrey);
-}
-
-.progress .left,
-.progress .right {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: 10px solid var(--orange);
-    border-radius: 100px 0px 0px 100px;
-    border-right: 0;
-    transform-origin: right;
-}
-
-.progress .left {
-    animation: load1 1s linear forwards;
-}
-
-.progress .right {
-    animation: load3 .8s linear forwards 1s;
-}
-
-@keyframes load1 {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(180deg);
-    }
-}
-
-@keyframes load3 {
-    0% {
-        z-index: 100;
-        transform: rotate(180deg);
-    }
-
-    100% {
-        z-index: 100;
-        transform: rotate(320deg);
-    }
-}
-
-/* END PROGRESS BAR TEST  */
 
 .personal_overview {
     background: var(--lightGrey);

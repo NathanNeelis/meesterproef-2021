@@ -1,6 +1,8 @@
 // Utils
 const getData = require('../utils/getData');
 const filterActivities = require('../utils/filterActivities')
+const calcDefaultGoal = require('../utils/calcDefaultGoal')
+const getWeeklyPamScore = require('../utils/calcWeeklyPamScore')
 
 const User = require('../models/user');
 
@@ -10,141 +12,16 @@ async function home(req, res) {
 
     // STEP 1: Fetch all data
     // daily PAM values
-    // const dailyPAMURL = 'https://gist.githubusercontent.com/NathanNeelis/f83a294032223066bdddbd5ff37c9dc7/raw/4853849d9da46786b557a131937759bb16218dbc/pam_today'
+    const dailyPAMURL = 'https://gist.githubusercontent.com/NathanNeelis/f83a294032223066bdddbd5ff37c9dc7/raw/4853849d9da46786b557a131937759bb16218dbc/pam_today'
 
     // EPOCH VALUES - PAM each 15 minutes
     // const epochURL = 'https://gist.githubusercontent.com/NathanNeelis/9a449e389ab30351369c8556ce634b1b/raw/38da52499b41c51af294845d8576c18a85964aff/epoch_values'
-
-    // const weeklyData = await getData(dailyPAMURL) // 2 weekly data split in days
     // const rawDailyData = await getData(epochURL) // data every 15 minutes
-
-    const weeklyData = [{ // Weekly data as json data instead of API call. GitHub causing some troubles with the Gist
-        "date": "2017-10-19",
-        "values": [{
-            "pam": "8.50",
-            "light_activity": "59",
-            "medium_activity": "8",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-20",
-        "values": [{
-            "pam": "8.69",
-            "light_activity": "50",
-            "medium_activity": "11",
-            "heavy_activity": "1"
-        }]
-    }, {
-        "date": "2017-10-21",
-        "values": [{
-            "pam": "7.19",
-            "light_activity": "42",
-            "medium_activity": "8",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-22",
-        "values": [{
-            "pam": "5.56",
-            "light_activity": "32",
-            "medium_activity": "8",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-23",
-        "values": [{
-            "pam": "4.44",
-            "light_activity": "25",
-            "medium_activity": "6",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-24",
-        "values": [{
-            "pam": "6.19",
-            "light_activity": "34",
-            "medium_activity": "9",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-25",
-        "values": [{
-            "pam": "3.06",
-            "light_activity": "15",
-            "medium_activity": "4",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-26",
-        "values": [{
-            "pam": "0.19",
-            "light_activity": "0",
-            "medium_activity": "0",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-27",
-        "values": [{
-            "pam": "0.12",
-            "light_activity": "0",
-            "medium_activity": "0",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-28",
-        "values": [{
-            "pam": "6.75",
-            "light_activity": "43",
-            "medium_activity": "9",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-29",
-        "values": [{
-            "pam": "9.25",
-            "light_activity": "57",
-            "medium_activity": "12",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-30",
-        "values": [{
-            "pam": "11.00",
-            "light_activity": "72",
-            "medium_activity": "11",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-10-31",
-        "values": [{
-            "pam": "6.06",
-            "light_activity": "38",
-            "medium_activity": "7",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-11-01",
-        "values": [{
-            "pam": "4.31",
-            "light_activity": "28",
-            "medium_activity": "5",
-            "heavy_activity": "0"
-        }]
-    }, {
-        "date": "2017-11-02",
-        "values": [{
-            "pam": "6.62",
-            "light_activity": "44",
-            "medium_activity": "7",
-            "heavy_activity": "0"
-        }]
-    }]
-
-
-    const currentDay = weeklyData[14] // This should be automated for the current day.
-    const currentWeek = getCurrentWeek(weeklyData) // At the moment the PAM average of all the data plus 1
-
     // const defaultRawData = rawDailyData[14].scores
+
+    const weeklyData = await getData(dailyPAMURL) // 2 weekly data split in days
+    const currentDay = weeklyData[14] // This should be automated for the current day.
+    const currentWeek = calcDefaultGoal(weeklyData) // At the moment the PAM average of all the data plus 1
     const defaultRawData = "000102000000010201000001010000000000000000000000000000000000000000010103030200000000000000000000000004010001010100010001000001000101010203000000000000000000000000000100010000000000000000000000"
     const rawDataArray = defaultRawData.match(/.{1,2}/g);
 
@@ -231,6 +108,31 @@ async function home(req, res) {
         }
     }
 
+    // SIDE STEP: Calculating percentage of goal
+    // daily goal
+    let dailyGoal;
+    dailyGoal = calcDefaultGoal(weeklyData) // with the static data this is 7 at the moment -> avarage pam + 1
+    // dailyGoal = // get the daily goal from user input 
+
+    let pamScore;
+    pamScore = weeklyData[14].values[0].pam; // with the static data this is 6.62
+
+    let dailyGoalInPercentage;
+    dailyGoalInPercentage = Math.floor((pamScore / dailyGoal * 100));
+
+    // weekly goal
+    let weeklyPamScore;
+    weeklyPamScore = getWeeklyPamScore(weeklyData) // function in utils. Counts the total pamscore of the last 7 days.
+
+    let weeklyGoal;
+    weeklyGoal = dailyGoal * 7;
+
+    let weeklyGoalInPercentage;
+    weeklyGoalInPercentage = Math.floor((weeklyPamScore / weeklyGoal * 100));
+
+
+    // END SIDESTEP
+
     renderPage()
 
     function renderPage() {
@@ -243,7 +145,9 @@ async function home(req, res) {
                 currentDay: currentDay,
                 currentWeek: currentWeek,
                 user: user,
-                activitiesToday: activitiesToday
+                activitiesToday: activitiesToday,
+                dailyPercentage: dailyGoalInPercentage,
+                weeklyPercentage: weeklyGoalInPercentage
             });
         } else {
 
@@ -260,28 +164,3 @@ async function home(req, res) {
 
 
 module.exports = home;
-
-
-
-function getCurrentWeek(data) {
-    // new array with object only containing the pam value
-    let arrayPam = data.map((data, index) => {
-        return {
-            pam: parseInt(data.values[0].pam, 10), // string to integer
-        }
-    });
-
-    // getting the avarage pam score
-    // Resource: https://stackoverflow.com/questions/52513123/how-to-get-the-average-from-array-of-objects
-    let arrayTotal = 0;
-    let length = arrayPam.length;
-    arrayPam.forEach(({
-        pam
-    }) => arrayTotal += pam);
-
-    const avarage = Math.round(arrayTotal / length) + 1;
-    // console.log('avarage pam score dataset', avarage)
-
-    return avarage
-
-}
