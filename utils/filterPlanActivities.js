@@ -1,9 +1,8 @@
 function filterPlanActivities(dataToFilter, targetDate) {
     let newArr = [];
 
-
     if (dataToFilter.planned_activities) {
-        if (dataToFilter.planned_activities.length > 1) {
+        if (dataToFilter.planned_activities.length >= 1) {
             dataToFilter.planned_activities.forEach(result => {
                 if (result.date == targetDate) {
                     newArr.push(result)
