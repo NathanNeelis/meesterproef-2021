@@ -138,6 +138,11 @@ header h2 {
     margin-right: 2rem;
 }
 
+.dailyOverview h2,
+.weeklyOverview h2 {
+    text-align: center;
+}
+
 .dailyWrapper {
     display: flex;
     flex-direction: column;
@@ -656,6 +661,11 @@ footer {
         flex-direction: row;
         min-width: 38rem;
         justify-content: space-around;
+    }
+
+    .dailyOverview h2,
+    .weeklyOverview h2 {
+        text-align: left;
     }
 
     .dailygoal,
