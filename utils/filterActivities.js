@@ -4,6 +4,8 @@ function filteredActivities(dataToFilter) {
 
     let newArr = []
 
+    // filter over all activites and if the activity has the same date as today
+    // push the activity to a new array
     dataToFilter.activities.forEach((result) => {
         if (result.date == date) {
             newArr.push(result)

@@ -1,5 +1,7 @@
 function getRawDates() {
     let rawDataWeek = [];
+
+    // variable with each a new date object
     let date = new Date(),
         date1 = new Date(),
         date2 = new Date(),
@@ -8,6 +10,7 @@ function getRawDates() {
         date5 = new Date(),
         date6 = new Date();
 
+    // update variable to specific day in the week
     date1.setDate(date1.getDate() + 1);
     date2.setDate(date2.getDate() + 2);
     date3.setDate(date3.getDate() + 3);
@@ -15,6 +18,7 @@ function getRawDates() {
     date5.setDate(date5.getDate() + 5);
     date6.setDate(date6.getDate() + 6);
 
+    // new variable with each a date notation like yyyy-mm-dd
     let day1 = date.toISOString().slice(0, 10),
         day2 = date1.toISOString().slice(0, 10),
         day3 = date2.toISOString().slice(0, 10),
@@ -23,6 +27,7 @@ function getRawDates() {
         day6 = date5.toISOString().slice(0, 10),
         day7 = date6.toISOString().slice(0, 10);
 
+    // add all dates in an array
     rawDataWeek.push(day1, day2, day3, day4, day5, day6, day7)
 
     return rawDataWeek;

@@ -15,7 +15,6 @@ function defaultAvarage(data) {
     }) => arrayTotal += pam);
 
     const avarage = Math.round(arrayTotal / length) + 1;
-    // console.log('avarage pam score dataset', avarage)
 
     return avarage
 
