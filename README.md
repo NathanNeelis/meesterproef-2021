@@ -115,5 +115,5 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 [conic gradient 3](https://css-tricks.com/using-conic-gradients-css-variables-create-doughnut-chart-output-range-input/)  
 [animate conic gradient](https://css-tricks.com/the-state-of-changing-gradients-with-css-transitions-and-animations/)  
 [calculate total with reduce](https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers)
-
-
+[CSS register properties @supports](https://web.dev/at-property/)  
+[css register properties](https://developer.mozilla.org/en-US/docs/Web/API/CSS/RegisterProperty)  
