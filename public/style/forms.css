@@ -321,10 +321,14 @@ input[type=checkbox]:checked+label {
 
 
 
-
 .new_activities {
     width: 80vw;
     margin: 4rem auto 2rem auto;
+}
+
+
+.plan_activities article:first-child {
+    margin: 2rem auto;
 }
 
 .new_activities h2 {
@@ -425,7 +429,108 @@ input[type=checkbox]:checked+label {
     text-align: center;
 }
 
+/* DAGDOEL FORM  */
+.d-form {
+    width: min(60rem, 90vw);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    margin: 0 auto;
 
+}
+
+.d-form input {
+    display: block;
+    width: 5rem;
+    height: 3rem;
+    background-color: var(--lightGrey);
+    border: none;
+    padding: .7rem .5rem;
+    margin: .3rem 0rem 0 1rem;
+    border-radius: .5rem 0 0 .5rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.submitSmall {
+    height: 3rem;
+    padding: .7rem 2rem;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 0rem .5rem .5rem 0;
+    border: none;
+    margin: .3rem 0rem 0 0;
+    font-size: 1.2rem;
+}
+
+/* CONTACT FORM  */
+.c-form {
+    width: min(60rem, 90vw);
+    margin: 0 auto;
+}
+
+.c-form legend {
+    font-size: 1rem;
+    color: var(--blue);
+    margin: 0 0 1rem 0;
+    text-align: center;
+    padding: 0 1rem;
+    font-weight: 300;
+}
+
+.c-form fieldset {
+    padding: 0 1rem 1rem 1rem;
+    margin: 2rem 0;
+    border: 1px solid var(--darkGrey);
+    border-radius: 1rem;
+    /* background: var(--lightGrey); */
+}
+
+.c-form label {
+    display: block;
+    font-size: 1rem;
+    padding-top: .5rem;
+    text-align: left;
+}
+
+.c-form input {
+    display: block;
+    width: 100%;
+    background-color: var(--lightGrey);
+    border: 1px solid white;
+    padding: .7rem .5rem;
+    border-radius: .5rem;
+    font-size: .8rem;
+
+    margin-top: .5rem;
+    margin-bottom: .75rem;
+
+    font-family: var(--fontRoboto);
+    font-weight: 300;
+    color: var(--darkGrey)
+}
+
+.c-form textarea {
+    width: 100%;
+    height: 10rem;
+    background-color: var(--lightGrey);
+    border: 1px solid white;
+    padding: .7rem .5rem;
+    border-radius: .5rem;
+    font-size: .8rem;
+    resize: vertical;
+
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+
+    font-family: var(--fontRoboto);
+    font-weight: 300;
+
+}
+
+/* BREAK POINTS  */
 @media all and (min-width: 40rem) {
     .loginUser {
         height: 84.5vh;
@@ -456,7 +561,9 @@ input[type=checkbox]:checked+label {
     .r-form textarea,
     .redirectLogin,
     .l-form input,
-    .loginUser p {
+    .loginUser p,
+    .c-form input,
+    .c-form textarea {
         font-size: 1.2rem;
     }
 
@@ -489,6 +596,11 @@ input[type=checkbox]:checked+label {
 
     .addBtn {
         width: 50%;
+    }
+
+    .c-form {
+        width: min(60rem, 60vw);
+
     }
 }
 

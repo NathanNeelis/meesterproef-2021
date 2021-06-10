@@ -49,6 +49,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 1rem 0 0 0;
+    position: relative;
 }
 
 header img {
@@ -59,7 +60,21 @@ header img {
     padding: 1rem 0;
 }
 
+header a {
+    padding: 1rem 2rem;
+    background-color: var(--blue);
+    color: white;
+    border-radius: .3rem;
+    margin-top: 2rem;
+    text-decoration: none;
+    border: 1px solid var(--blue);
+    box-shadow: 0px 0px 13px -2px rgba(0, 0, 0, 0.47);
+}
 
+header a:hover {
+    background: white;
+    color: var(--blue);
+}
 
 header h2 {
     color: var(--blue);
@@ -421,40 +436,6 @@ footer {
     margin-bottom: 10rem;
 }
 
-
-.personal_overview {
-    background: var(--lightGrey);
-    width: 100vw;
-    padding: 4rem 1rem;
-    margin-top: 1rem;
-}
-
-.personal_overview h2 {
-    text-align: center;
-    color: var(--darkGrey);
-}
-
-.overview_wrapper {
-    background: var(--lightGrey);
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 1rem;
-    /* padding: 4rem 1rem; */
-}
-
-.overview_wrapper a {
-    padding: 1rem 2rem;
-    background-color: var(--orange);
-    color: white;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: .3rem;
-    margin: 1rem;
-    text-decoration: none;
-}
-
 .tst {
     display: flex;
     flex-direction: column;
@@ -684,10 +665,198 @@ footer {
 }
 
 
+/* INFORMATIE PAGE  */
+.info article {
+    width: min(40rem, 80vw);
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-color: var(--lightGrey);
+}
 
+.info_extra article {
+    width: min(40rem, 80vw);
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.info h2,
+.info h3,
+.info_extra h2,
+.info_extra h3 {
+    color: var(--blue);
+    padding-bottom: .5rem;
+}
+
+.info p,
+.info_extra p {
+    font-weight: 300;
+}
+
+
+.info_extra .confidentiality {
+    width: 100vw;
+    background: var(--blue);
+    color: white;
+    margin-top: 2rem;
+}
+
+.info .howItWorks {
+    width: 100vw;
+    margin-top: 2rem;
+}
+
+.confidentiality h3,
+.confidentiality p {
+    width: min(40rem, 80vw);
+    margin: 0 auto;
+    color: white;
+}
+
+.howItWorks h2 {
+    width: min(40rem, 80vw);
+    margin: 0 auto;
+    color: var(--orange);
+}
+
+.howItWorks p {
+    width: min(40rem, 80vw);
+    margin: 0 auto;
+    /* color: var(--orange); */
+}
+
+.info_register p:last-child,
+.info .howItWorks p:last-child {
+    padding: 1rem 0;
+}
+
+.info .stappen {
+    background: var(--orange);
+    width: 40vw;
+    height: 25rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    color: white;
+    margin: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info .stappen h3 {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.info img {
+    width: 70%;
+    padding-top: 2rem;
+}
+
+
+.steps {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+
+
+/* PROFIEL PAGINA  */
+.personal_overview {
+    background: var(--lightGrey);
+    width: 100vw;
+    padding: 4rem 1rem 1rem 1rem;
+    margin-top: 4rem;
+}
+
+.personal_overview h2 {
+    text-align: center;
+    color: var(--darkGrey);
+}
+
+.overview_wrapper {
+    background: var(--lightGrey);
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+    /* padding: 4rem 1rem; */
+}
+
+.overview_wrapper a {
+    padding: 1rem 2rem;
+    background-color: var(--orange);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: .3rem;
+    margin: 1rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.dailyGoal_set {
+    /* background: var(--lightGrey); */
+    width: 100vw;
+    padding: 4rem 1rem 1rem 1rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--darkGrey);
+}
+
+.dailyGoal_set p {
+    font-weight: 300;
+    padding-top: .5rem;
+}
+
+
+.contact {
+    /* background: var(--lightGrey); */
+    width: 100vw;
+    padding: 1rem 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--darkGrey);
+}
+
+.contact h2 {
+    color: var(--blue);
+}
+
+.contact p {
+    padding-bottom: 2rem;
+    padding-top: .5rem;
+    font-weight: 300;
+    /* color: var(--orange); */
+
+}
+
+.contact a {
+    padding: 1rem 2rem;
+    background-color: var(--orange);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: .3rem;
+    text-decoration: none;
+}
 
 /* BREAK POINTS  */
 @media all and (min-width: 40rem) {
+    header a {
+        padding: 1rem 2rem;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+    }
+
     .header {
         padding: 3rem 0 1rem 0;
     }
@@ -753,6 +922,13 @@ footer {
 }
 
 @media all and (min-width: 65rem) {
+
+    header a {
+        margin-top: 2rem;
+        position: initial;
+
+    }
+
     .overview {
         min-width: 53rem;
     }

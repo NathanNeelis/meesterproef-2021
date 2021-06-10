@@ -5,7 +5,7 @@
     <h2 class="profile_menu">Profiel</h2>
 
     <% if (user) { %>
-    <a href="/logout"> logout</a>
+    <a href="/logout"> uitloggen</a>
     <% } else { %>
     <a href="/login"> login</a>
     <% } %>
@@ -14,11 +14,54 @@
 
 <main>
     <section class="personal_overview">
-        <h2>Je persoonlijke overzicht</h2>
+        <h2>Je persoonlijke overzicht <%= user.name %></h2>
         <article class="overview_wrapper">
-            <a href="/">Overzicht activiteiten</a>
+            <a href="/">Activiteiten overzicht </a>
             <a href="/">Doelen overzicht</a>
         </article>
+
+    </section>
+
+    <section class="dailyGoal_set">
+        <h2>Dagdoel</h2>
+        <p>Stel hier samen met je therapeut de moeilijkheidsgraad in van je dagelijkse doel.</p>
+        <form action="/register" class="d-form" id="dagdoel_form" method="POST">
+            <label for="dagDoel">Stel je dagdoel in:</label>
+            <input type="number" id="dagDoel" name="dagDoel" value="<%= currentWeek %>">
+
+            <button form="dagdoel_form" type="submit" class="submitSmall">
+                update
+            </button>
+        </form>
+    </section>
+
+    <section class="contact">
+        <h2>Loop je vast?</h2>
+
+        <form action="/" class="c-form" name="contact-form">
+            <fieldset>
+                <legend>Neem contact met ons op</legend>
+                <label for="contactsName">Wat is je naam?</label>
+                <input type="text" id="contactsName" name="contactsName" value="<%= user.name%>" required>
+
+                <label for="contactsEmail">Wat is je email?</label>
+                <input type="email" id="contactsEmail" name="contactsEmail" value="<%= user.email%>" required>
+
+                <label for="contactsPhonenumber">Wat is je telefoonnummer?</label>
+                <input type="tel" id="contactsPhonenumber" name="contactsPhonenumber"
+                    placeholder="Kunnen we je telefonisch bereiken?">
+
+                <label for="question">Schrijf hier je bericht</label>
+                <textarea name="question" id="question" placeholder="Waarmee kunnen we je helpen?" required></textarea>
+
+                <button form="contact-form" type="submit" class="submitBtn">
+                    Verzend
+                </button>
+
+            </fieldset>
+
+        </form>
+        <!-- <a href="/">Activiteiten overzicht </a> -->
 
     </section>
 
