@@ -1,15 +1,16 @@
 /* LOGIN FORM  */
 .loginUser {
     width: 100vw;
-    height: 83vh;
+    /* height: 86vh; */
     background: var(--blue);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3rem 0;
 }
 
 .loginUser div {
-    width: 60vw;
+    width: 90vw;
     background: white;
     border-radius: 1rem;
     padding: 3rem;
@@ -28,7 +29,7 @@
     padding: .7rem .5rem;
     border-radius: .5rem;
     margin-top: .3rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .l-form legend {
@@ -56,7 +57,7 @@
 .loginUser p {
     margin-top: 2rem;
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--darkGrey);
 }
 
@@ -87,23 +88,24 @@
 }
 
 .registerUser div {
-    width: 80vw;
+    width: 90vw;
     background: white;
     border-radius: 1rem;
-    padding: 3rem;
+    padding: 1.5rem;
     margin: 4rem 0;
+    text-align: center;
 }
 
 
 .registerUser h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 1rem 0 2rem 0;
     color: var(--orange);
     font-weight: 300;
 }
 
 .r-form legend {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--blue);
     margin: 1rem 0 1rem 0;
     text-align: center;
@@ -111,7 +113,7 @@
 }
 
 .r-form fieldset {
-    padding: 0 2rem 1rem 2rem;
+    padding: 0 1rem 1rem 1rem;
     margin: 2rem 0;
     border: 1px solid var(--darkGrey);
     border-radius: 1rem;
@@ -121,7 +123,8 @@
 .r-form label {
     display: block;
     font-size: 1rem;
-
+    padding-top: 1rem;
+    text-align: left;
 }
 
 .r-form input {
@@ -131,7 +134,7 @@
     border: 1px solid white;
     padding: .7rem .5rem;
     border-radius: .5rem;
-    font-size: 1.2rem;
+    font-size: .8rem;
 
     margin-top: .5rem;
     margin-bottom: 1rem;
@@ -145,6 +148,7 @@
     padding: 0 0 1rem 0;
     color: var(--orange);
     font-weight: 300;
+    font-size: 1rem;
 }
 
 .r-form em {
@@ -157,7 +161,7 @@
     border: 1px solid white;
     padding: .7rem .5rem;
     border-radius: .5rem;
-    font-size: 1.2rem;
+    font-size: .8rem;
     resize: vertical;
 
     margin-top: .5rem;
@@ -171,7 +175,7 @@
 .redirectLogin {
     margin-top: 2rem;
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--darkGrey);
 }
 
@@ -423,6 +427,50 @@ input[type=checkbox]:checked+label {
 
 
 @media all and (min-width: 40rem) {
+    .loginUser {
+        height: 84.5vh;
+    }
+
+    .loginUser div {
+        width: min(30rem, 60vw);
+    }
+
+    .registerUser div {
+        width: 80vw;
+        background: white;
+        border-radius: 1rem;
+        padding: 3rem;
+        margin: 4rem 0;
+        text-align: left;
+    }
+
+    .r-form fieldset {
+        padding: 0 2rem 1rem 2rem;
+    }
+
+    .r-form label {
+        padding-top: 0;
+    }
+
+    .r-form input,
+    .r-form textarea,
+    .redirectLogin,
+    .l-form input,
+    .loginUser p {
+        font-size: 1.2rem;
+    }
+
+    .r-form legend {
+        font-size: 1.5rem;
+    }
+
+    .registerUser h2 {
+        font-size: 2rem;
+
+    }
+
+
+
     .grow {
         min-width: 80vw;
         height: 45em;
@@ -446,6 +494,10 @@ input[type=checkbox]:checked+label {
 
 
 @media all and (min-width: 60rem) {
+    .loginUser {
+        min-height: 30vh;
+    }
+
     .grow {
         min-width: 48rem;
         height: 35rem;

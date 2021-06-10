@@ -117,3 +117,4 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 [calculate total with reduce](https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers)
 [CSS register properties @supports](https://web.dev/at-property/)  
 [css register properties](https://developer.mozilla.org/en-US/docs/Web/API/CSS/RegisterProperty)  
+[caniuse register propreties](https://caniuse.com/?search=CSS.registerProperty)  
