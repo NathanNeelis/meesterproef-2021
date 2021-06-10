@@ -68,10 +68,14 @@ header h2 {
 
 /* bottom navigation  */
 .navBottom {
-    background: var(--lightGrey);
+    /* background: var(--lightGrey); */
+    background-color: #e0e0e0;
     width: 100vw;
     position: fixed;
     bottom: 0;
+
+    border-radius: 1rem 1rem 0rem 0;
+    box-shadow: 0px -3px 18px -7px rgba(0, 0, 0, 0.48);
 }
 
 .navBottom ul {
@@ -82,20 +86,54 @@ header h2 {
 
 .navBottom li {
     list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    text-align: center;
+}
+
+.navBottom ul li a:first-child {
+    border-radius: 1rem 0 0rem 0;
+}
+
+.navBottom a:last-child {
+    border-radius: 0 1rem 0 0;
 }
 
 .navBottom a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    width: 25%;
-    padding: 2rem 0;
+    width: 100%;
+    padding: 2rem 0 1rem 0;
     text-align: center;
-    /* border-right: 1px solid black; */
     font-weight: 300;
     color: var(--darkGrey);
 }
 
+.navBottom li:nth-child(2),
+.navBottom li:nth-child(3),
+.navBottom li:nth-child(4) {
+    border-left: 1px solid white;
+}
 
+.navBottom .nav {
+    /* background: var(--blue); */
+    width: 50%;
+    padding-bottom: .5rem;
+    border-bottom: 5px solid #e0e0e0;
+}
 
+.navBottom .nav_active {
+    color: var(--blue);
+    border-bottom: 5px solid var(--blue);
+}
+
+.footer {
+    background-color: #e0e0e0;
+}
 
 
 /* Data overview  */
@@ -126,7 +164,7 @@ header h2 {
 
 .overview {
     background-color: var(--lightGrey);
-    min-width: 80vw;
+    min-width: 70vw;
     min-height: 18rem;
     /* display: inline-block; */
     padding: 2rem;
@@ -149,6 +187,7 @@ header h2 {
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
+    width: 100%;
 }
 
 
@@ -304,6 +343,10 @@ header h2 {
     margin-bottom: 2rem;
 }
 
+.activities_wrapper li {
+    list-style: none;
+}
+
 .activities_wrapper::-webkit-scrollbar {
     width: 5px;
 }
@@ -318,7 +361,7 @@ header h2 {
 }
 
 .activity_overview {
-    min-width: 12rem;
+    min-width: 11rem;
     height: 12rem;
     background: var(--lightGrey);
     padding: 2rem;
@@ -659,7 +702,7 @@ footer {
 
     .dailyWrapper {
         flex-direction: row;
-        min-width: 38rem;
+        min-width: 100%;
         justify-content: space-around;
     }
 
@@ -727,11 +770,11 @@ footer {
     }
 
     .navBottom {
-        background: var(--lightGrey);
-        width: 100vw;
         position: fixed;
         top: 0;
         bottom: inherit;
+        border-radius: 0 0 1rem 1rem;
+        box-shadow: 0px 3px 18px -7px rgba(0, 0, 0, 0.48);
     }
 
     .activity_details {

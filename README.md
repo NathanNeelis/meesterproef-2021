@@ -67,7 +67,7 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 
 * [ ] Add todays planned activities to homepage
 * [ ] Add CTA to activity feedback pages
-* [ ] Responsive
+* [x] Responsive
 * [ ] Dagdoel instellen
 * [ ] Overzicht dagdoelen
 * [ ] Overzicht activiteiten
