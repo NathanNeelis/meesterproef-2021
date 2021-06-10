@@ -11,8 +11,6 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 
 ## Table of contents
 
-## Description
-
 ## Assignment
 
 ## Concept
@@ -65,10 +63,10 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 * [x] Plan activities form
 * [x] Planned activities to database
 * [x] Planned activities from database in overview
+* [x] Animation dag en week doel
+
 * [ ] Add todays planned activities to homepage
 * [ ] Add CTA to activity feedback pages
-
-* [ ] Animation dag en week doel
 * [ ] Responsive
 * [ ] Dagdoel instellen
 * [ ] Overzicht dagdoelen
