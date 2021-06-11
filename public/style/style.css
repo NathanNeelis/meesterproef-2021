@@ -956,4 +956,11 @@ footer {
     .activity_details {
         padding-top: 5rem;
     }
+
+    .info img {
+        max-height: 50%;
+        width: initial;
+        padding-top: 2rem;
+    }
+
 }
