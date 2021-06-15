@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: false
+        required: true
     },
     birthDate: {
         type: Date,
@@ -26,32 +26,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    medical_information: {
-        type: Object,
-        requried: false,
-        practice: {
-            type: String,
-            required: false,
-        },
-        duration_revalidaton: {
-            type: String,
-            required: false,
-        },
-        cause: {
-            type: String,
-            required: false,
-        },
-        remarks: {
-            type: String,
-            required: false,
-        }
-    },
     hipper_details: {
         type: Object,
-        required: false,
+        required: true,
         pam_client_id: {
             type: String,
-            required: false,
+            required: true,
+        },
+        hipperbox_id: {
+            type: Number,
+            required: true,
         },
         startdate: {
             type: Date,

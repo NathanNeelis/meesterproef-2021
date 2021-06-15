@@ -47,34 +47,14 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Medische informatie</legend>
-                    <p>U bent <em>niet</em> verplicht deze informatie in te vullen</p>
-                    <!-- Ergo / fysio therapeut  -->
-                    <label for="practice">Bij welke Ergo of Fysio praktijk wordt u behandeld?</label>
-                    <input type="text" id="practice" name="practice" placeholder="wat is uw revalidatie praktijk?">
-
-                    <!-- Hoe lang al aan het revalideren -->
-                    <label for="duration_revalidation">Hoe lang bent u al aan het revalideren?</label>
-                    <input type="text" id="duration_revalidation" name="duration_revalidation"
-                        placeholder="bijvoorbeeld: 1 jaar en 3 maanden">
-
-                    <!-- waarvan aan het revalideren? -->
-                    <label for="cause_revalidation">Waar bent u van aan het revalideren?</label>
-                    <input type="text" id="cause_revalidation" name="cause_revalidation"
-                        placeholder="bijvoorbeeld: Knie operatie of Covid-19">
-
-                    <!-- overige opmerkingen betreft revalideren  -->
-                    <label for="remarks">Heeft u nog verdere opmerkingen betreft het revalideren?</label>
-                    <textarea name="remarks" id="remarks" placeholder="overige opmerkingen"></textarea>
-
-                </fieldset>
-
-                <fieldset>
                     <legend>Hipper</legend>
-                    <p>U bent <em>niet</em> verplicht deze informatie in te vullen</p>
+                    <p>Deze informatie is nodig om data te lezen van uw PAM apparaat</p>
                     <!-- PAM client id  -->
                     <label for="pam_client_id">Hipper Client ID</label>
-                    <input type="text" id="pam_client_id" name="pam_client_id" placeholder="1096">
+                    <input type="text" id="pam_client_id" name="pam_client_id" placeholder="20255">
+
+                    <label for="hipperbox_id">Hipperbox ID</label>
+                    <input type="number" id="hipperbox_id" name="hipperbox_id" placeholder="1096">
 
                     <!-- begin datum hipper  -->
                     <label for="startdate_hipper">Startdatum Hipper</label>

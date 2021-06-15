@@ -19,14 +19,9 @@ function newUser(req, res, next) {
                     name: req.body.fullName,
                     birthDate: req.body.birthDate,
                     location: req.body.location,
-                    medical_information: {
-                        practice: req.body.practice,
-                        duration_revalidation: req.body.duration_revalidation,
-                        cause: req.body.cause_revalidation,
-                        remarks: req.body.remarks
-                    },
                     hipper_details: {
                         pam_client_id: req.body.pam_client_id,
+                        hipperbox_id: req.body.hipperbox_id,
                         startdate: req.body.startdate_hipper
                     },
                 },
