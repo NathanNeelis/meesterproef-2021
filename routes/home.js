@@ -3,6 +3,9 @@ const getData = require('../utils/getData');
 const filterActivities = require('../utils/filterActivities')
 const calcDefaultGoal = require('../utils/calcDefaultGoal')
 const getWeeklyPamScore = require('../utils/calcWeeklyPamScore')
+const dataToTimeSlots = require('../utils/dataToTimeSlots')
+const sum = require('../utils/sum')
+const refactorStartTime = require('../utils/refactorStartTime')
 
 const User = require('../models/user');
 
@@ -22,7 +25,7 @@ async function home(req, res) {
     const weeklyData = await getData(dailyPAMURL) // 2 weekly data split in days
     const currentDay = weeklyData[14] // This should be automated for the current day.
     const currentWeek = calcDefaultGoal(weeklyData) // At the moment the PAM average of all the data plus 1
-    const defaultRawData = "000000000000000000000000000000000000000000000000000000000000000000000000000001000001010000000000000000010000030503010000000200000000000000000000000000000000000000000000000000000515000000000000"
+    const defaultRawData = "010101010101010201010101010101010101010101010101010101010101010101010101010101010101010203010401010101010202030503010101010202030102010103040102010102030401020302010402010101010515000000000000"
     const rawDataArray = defaultRawData.match(/.{1,2}/g);
 
     let activitiesToday; // Zero state
@@ -39,25 +42,10 @@ async function home(req, res) {
     if (data.activities) {
         activitiesToday = filterActivities(data);
 
-        // STEP 3: create array of time each 15 minutes
-        // resource: https://stackoverflow.com/questions/36125038/generate-array-of-times-as-strings-for-every-x-minutes-in-javascript
-        const x = 15; //minutes interval
-        let times = []; // time array
-        let tt = 0; // start time
+        // STEP 3: create array of time each 15 minutes - IN UTIL
+        // STEP 4: create object from 2 arrays (time + rawdata) - IN UTIL
+        const rawDataObject = dataToTimeSlots(rawDataArray)
 
-        //loop to increment the time and push results in array
-        for (var i = 0; tt < 24 * 60; i++) {
-            var hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
-            var mm = (tt % 60); // getting minutes of the hour in 0-55 format
-            times[i] = ("0" + (hh % 24)).slice(-2) + ':' + ("0" + mm).slice(-2); // pushing data in array 
-            tt = tt + x;
-        }
-
-
-        // STEP 4: create object from 2 arrays (time + rawdata)
-        // resource https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
-        let rawDataObject = {};
-        times.forEach((time, i) => rawDataObject[time] = parseInt(rawDataArray[i], 10));
 
         // STEP 5: calculate pam score
         // resource: https://masteringjs.io/tutorials/fundamentals/filter-object
@@ -65,28 +53,25 @@ async function home(req, res) {
         // STEP 5.1: Find the latest activity
         const latestActivity = activitiesToday[0] // Yes this is [0] because I reversed the array
 
-        // STEP 5.2: Save the rawdataObjec as an array
-        const asArray = Object.entries(rawDataObject);
+        // STEP 5.2: Save the rawdataObject as an array
+        const rawDataAsArray = Object.entries(rawDataObject);
 
-        // STEP 5.3: filter the array -> If bigger then start time and smaller then end time of activity.
+
         if (latestActivity) {
-            const inTimeFrame = asArray.filter(([key, value]) => (key >= latestActivity.activity.startTime_activity && key <= latestActivity.activity.endTime_activity));
+            // This function makes sure you get the points of the current timeframe as well
+            // by removing up to 14 minutes
+            const refactoredStartTime = refactorStartTime(latestActivity.activity.startTime_activity)
+
+            // STEP 5.3: filter the array -> If bigger then start time and smaller then end time of activity.
+            const inTimeFrame = rawDataAsArray.filter(([key, value]) => (key >= refactoredStartTime && key <= latestActivity.activity.endTime_activity));
 
             // STEP 5.4: Reverd result back as an object
             const rawPamScore = Object.fromEntries(inTimeFrame);
 
             // STEP 5.5 Calculate total pamscore
-            // resource: https://stackoverflow.com/questions/39127989/creating-a-javascript-object-from-two-arrays
-            function sum(obj) {
-                var sum = 0;
-                for (var el in obj) {
-                    if (obj.hasOwnProperty(el)) {
-                        sum += parseFloat(obj[el]);
-                    }
-                }
-                return sum;
-            }
-
+            // AT THE MOMENT: adds all raw values in timeframe, which is the total minutes.
+            // TODO: This should be a calculation of the PAM score based on the total minutes 
+            // MISSING: Formula minutes to PAM score
             let totalPamScoreActivity = sum(rawPamScore);
 
 

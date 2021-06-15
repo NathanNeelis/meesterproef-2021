@@ -1,5 +1,5 @@
 // UTILS
-const findActivity = require('../utils/findActivitie')
+const findActivity = require('../utils/findActivity')
 const User = require('../models/user');
 
 const feedbackActivity = async (req, res) => {

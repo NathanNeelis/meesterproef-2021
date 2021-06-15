@@ -2,7 +2,20 @@ const CORE_CACHE_VERSION = 'v2'
 const CORE_CACHE_NAME = 'hipper-cache' + CORE_CACHE_VERSION;
 const CORE_ASSETS = [
     // '/offline',
-    // '/style/style.css',
+    '/style/style.css',
+    '/style/forms.css',
+    '/images/app_icon/icon-192x192.png',
+    '/images/hipper.svg',
+    '/images/walking.svg',
+    '/images/walking_white.svg',
+    '/images/wandelen_white.svg',
+    '/images/add.svg',
+    '/images/close.svg',
+    '/images/overige_white.svg',
+    '/js/activity_timer.js',
+    '/js/menu_update.js',
+    '/js/plan_form.js',
+    '/js/update_goals.js',
 ];
 
 self.addEventListener('install', (event) => {

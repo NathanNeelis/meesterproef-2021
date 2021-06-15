@@ -22,7 +22,6 @@ async function activities(req, res) {
     const activityArrayDay6 = filterPlanActivities(data, rawDates[5]);
     const activityArrayDay7 = filterPlanActivities(data, rawDates[6]);
 
-
     renderPage()
 
     function renderPage() {
