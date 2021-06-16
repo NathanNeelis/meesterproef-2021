@@ -10,6 +10,18 @@ Hipper is a device that is based on sensor technology (IOT device) that helps th
 
 
 ## Table of contents
+[Description](https://github.com/NathanNeelis/meesterproef-2021#description)  
+[Design Challange](https://github.com/NathanNeelis/meesterproef-2021#design-challenge)  
+[Concept](https://github.com/NathanNeelis/meesterproef-2021#concept)  
+[Getting started](https://github.com/NathanNeelis/meesterproef-2021#getting-started)  
+[Packages](https://github.com/NathanNeelis/meesterproef-2021#packages)  
+[Features](https://github.com/NathanNeelis/meesterproef-2021#features)  
+[Data & API](https://github.com/NathanNeelis/meesterproef-2021#data--api)  
+[Code structure](https://github.com/NathanNeelis/meesterproef-2021#code-structure)  
+[Planning](https://github.com/NathanNeelis/meesterproef-2021#planning)  
+[License](https://github.com/NathanNeelis/meesterproef-2021#license)  
+[Resources](https://github.com/NathanNeelis/meesterproef-2021#resources)  
+ 
 
 ## Design Challenge
 Hipper supports rehabilitation patient by measuring their movement and visualizing this data in a dashboard. Research shows that most users have trouble interpreting the information about their rehabilitation progress. I will be designing a new dashboard for Hipper that visualizes this information in a more user friendly way. Apart from the data visualization I am going to research how I can motivate the patient to move more often and add this solution to the new application.
@@ -19,7 +31,7 @@ Hipper 2.0 is an application that can be installed on most devices and accessed 
     
 ![all-screens](https://user-images.githubusercontent.com/55492381/122193207-9a0da800-ce94-11eb-8afb-794f513770a2.png)  
   
-## Gettign started
+## Getting started
 
 ### Cloning the repo
 1. Create your git repo  
