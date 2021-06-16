@@ -21,6 +21,8 @@ if (startActivity) {
     const inputFormEndTime = document.getElementById('endTime_activity');
     const buttonSave = document.querySelector('.Btn_save_activity');
 
+    const close = document.querySelector('.close-activity');
+
     // format timer
     let hours = 00;
     let minutes = 00;
@@ -29,23 +31,10 @@ if (startActivity) {
     let Interval;
     let activityDuration;
 
-
-
-
-
-
-    // TO DO
-    // Fix buttons DONE
-    // make timer pretty
-
-    // Take a very good look at the date object and how I save it in the database. DONE
-    // Not quite there yet. DONE
-
-    // create overview page  for redirect
-    // redirect overview page
-
-    // update overview/home page with activites that day/week?
-
+    // close acitivty 
+    close.onclick = function () {
+        location.href = "/";
+    }
 
     // start
     buttonStart.onclick = function () {

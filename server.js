@@ -16,6 +16,7 @@ connectMDB(); // connect with database
 const home = require('./routes/home');
 const activities = require('./routes/activities')
 const login = require('./routes/login')
+const offline = require('./routes/offline')
 const register = require('./routes/register')
 const newUser = require('./routes/newUser')
 const loginpost = require('./routes/loginpost')
@@ -56,6 +57,7 @@ app.get("/", userRedirectLogin, home)
     .get("/logout", logout)
     .get("/info", info)
     .get("/profile", profile)
+    .get("/offline", offline)
 
 app.post("/register", newUser)
     .post("/login", loginpost)

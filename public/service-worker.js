@@ -1,7 +1,7 @@
-const CORE_CACHE_VERSION = 'v2'
+const CORE_CACHE_VERSION = 'v6'
 const CORE_CACHE_NAME = 'hipper-cache' + CORE_CACHE_VERSION;
 const CORE_ASSETS = [
-    // '/offline',
+    '/offline',
     '/style/style.css',
     '/style/forms.css',
     '/images/app_icon/icon-192x192.png',
