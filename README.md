@@ -4,17 +4,21 @@
 :earth_americas:  [live website](https://hipper-pam.herokuapp.com/) 
 
 #### Description
-Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op basis van sensor technologie (een IOT device) de beweging registreert van de gebruiker en deze data naar een server stuurt. Deze data is inzichtelijk via een dashboard. Dit project gaat over het visualiseren van deze data op dit dashboard. In dit project ga ik onderzoeken wat voor data er beschikbaar is en wat hiervan van belang is voor de doelgroep. Ook ga ik uitzoeken hoe Hipper de gebruiker kan motiveren te gaan bewegen zonder het risico te lopen dat ze gedemotiveerd worden. - translate to English  
+Hipper is a device that is based on sensor technology (IOT device) that helps the user with the rehabilitation process. The device, called a PAM device, registers movement and sends this data to a server. This data is visualized in the Hipper dashboard. In this project I will do research to find a better way to visualize this data and how this can be communicated to the target audience. I will also be looking for a solution on how to motivate this target audience to start moving more often without getting demotivated.
 
--- image of application
+<img width="600" alt="Ipad_hipper_home" src="https://user-images.githubusercontent.com/55492381/122191910-70a04c80-ce93-11eb-9c95-71fe40a41eae.png">
 
 
 ## Table of contents
 
-## Assignment
+## Design Challenge
+Hipper supports rehabilitation patient by measuring their movement and visualizing this data in a dashboard. Research shows that most users have trouble interpreting the information about their rehabilitation progress. I will be designing a new dashboard for Hipper that visualizes this information in a more user friendly way. Apart from the data visualization I am going to research how I can motivate the patient to move more often and add this solution to the new application.
 
 ## Concept
-
+Hipper 2.0 is an application that can be installed on most devices and accessed on all devices. In this application you can track your activities to reach your goals. These activities and goals can later be accessed in an overview. Based on your scores you can adjust your goals with your therapist and plan new activities for the coming week.   
+    
+![all-screens](https://user-images.githubusercontent.com/55492381/122193207-9a0da800-ce94-11eb-8afb-794f513770a2.png)  
+  
 ## Gettign started
 
 ### Cloning the repo
@@ -35,16 +39,130 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
     npm install
     ```  
 
-4. Start the app on localhost:8080 
+4. Create a .env file with database and sessions variables like this: 
+    ```bash
+    DB_HOST=’host url’
+    DB_PORT=’port van database’
+    DB_NAME=’database naam’
+    SESSION_SECRET=’uniek wachtwoord als session secret’
+    ```  
+
+5. Start the app on localhost:2000
     ```bash
     npm start
     ```  
 
 ## Packages
+[bcrypt](https://www.npmjs.com/package/bcrypt)  
+[body-parser](https://www.npmjs.com/package/body-parser)  
+[compression](https://www.npmjs.com/package/compression)  
+[dotenv](https://www.npmjs.com/package/dotenv)  
+[ejs](https://www.npmjs.com/package/ejs)  
+[express](https://www.npmjs.com/package/express)  
+[express-sessions](https://www.npmjs.com/package/express-session)  
+[mongoose](https://www.npmjs.com/package/mongoose)  
+[node-fetch](https://www.npmjs.com/package/node-fetch)  
+[slug](https://www.npmjs.com/package/slug)  
 
 ## Features
+### Login & register
+To secure the users data he will need to login. If the user doenst have an account yet, he can register himself.  
+  
+<img width="500" alt="Hipper_inloggen" src="https://user-images.githubusercontent.com/55492381/122055392-dedc0500-cde8-11eb-9364-fc1693911733.gif">  
+  
+
+### Daily- and weekly goals
+Through movement with the PAM device, you will increase your score in your daily and weekly goals. You can do activities that have been suggested to you by your therapist. The goal reaches a 100% if your score is higher than the average of all your daily scores + 1 or higher than your manually set goal. Don’t be afraid to reach a higher score then a 100% because it will still count in your daily score!
+  
+<img width="500" alt="doelen" src="https://user-images.githubusercontent.com/55492381/122055387-de436e80-cde8-11eb-9d5a-3376f8bacac1.gif">  
+  
+
+### Start an activity
+Are you going to do an activity? Start this activity in the renewed hipper app. By doing this the app registers out of which activities your movement that day exists. This might come in handy when you have an appointment with your therapist, and you can show which activities you have done instead of relying on your memory. Another benefit is that you will see which score your activities gets.
+  
+<img width="500" alt="activiteit starten" src="https://user-images.githubusercontent.com/55492381/122055381-db487e00-cde8-11eb-9b60-7f8d74e7a9b0.gif">   
+  
+### Plan activities
+On your appointment with your therapist, you can plan activities for the coming week together. This way you can’t forget which activities you planned for today and motivates you in completing them.
+  
+<img width="500" alt="activiteiten plannen" src="https://user-images.githubusercontent.com/55492381/122055409-e4394f80-cde8-11eb-838b-a74e97bfab46.gif"> 
+  
+
+### Set your goal manually
+Having trouble with completing your daily and weekly goals? Or are they to easy? You can adjust them together with your therapist to a more realistic goal that helps you with your rehabilitation process. 
+  
+<img width="500" alt="doel instellen" src="https://user-images.githubusercontent.com/55492381/122056312-c28c9800-cde9-11eb-889f-96a50ba4689d.png">  
+  
+### Contact the Hipper team
+Having trouble with the application, your account or the PAM device? You can contact the Hipper team through this contact form and receive help as quickly as possible. 
+  
+<img width="500" alt="contact opnemen" src="https://user-images.githubusercontent.com/55492381/122055386-ddaad800-cde8-11eb-91c0-293454d71dcd.gif">    
+  
+### Install the app & offline
+On some devices you can install this app. Installing this application makes for easy access because you won’t have to open your browser every time. You can also access pages offline after you have visited them. They will contain the latest data from when you did have an internet connection. This makes visiting the Therapist easier because you can take your tablet with you and show your rehabilitation progression while not having access to their Wi-Fi.
+  
+ <img width="500" alt="installeren" src="https://user-images.githubusercontent.com/55492381/122055394-df749b80-cde8-11eb-9601-38fde7af08b0.gif">  
+  
 
 ## Data & API
+By wearing the hipper device, called the PAM device, the data gets saved on a server. This data is accessible through an api.
+
+### PAM daily values
+In the daily values the data is summarized for each day. This data includes how many minutes the user has moved and with which intensity. In this example is shown that the user has done 59 minutes of light activities and 8 minutes of medium activities. The total PAM score he gets for his movement is 8.50.
+
+### Pam epoch values (raw data)
+This is the raw data from the device. The devices updates every 15 minutes with new data about the movement of this time period. The result is a string with 192 characters which each 2 characters represents 15 minutes in a day. The score of the 2 characters are the minutes moved in that timeframe.
+
+### Diagram
+On the left you can see an example of the daily data and on the right an example of the raw data for one specific day.
+
+![Dataoverzicht](https://user-images.githubusercontent.com/55492381/118803983-5f6c1c00-b8a4-11eb-9f0d-2c60b0449d88.jpg)
+
+
+## Code Structure
+### Progressive web app
+This is a progressive web app with an installed service worker and a manifest. This way the app can be installed on some devices and are visited pages offline available. 
+The service worker has been set up to always open the page with loading the content from the Node server and save its content in the cache. Only when the user is offline it will fall back on the cached pages.
+
+### Node applicatie
+This application has been made with a Node.js backend. Through Node all dynamic data is set on their rightful places. This can be in a HTML page or even in the database. Through Node I also compress all pages for faster loading speed.
+
+### EJS Templating
+I choose to use EJS templating to render the HTML pages. Using EJS I can easily add dynamic data to my pages.
+
+### MongoDB database
+For the database I choose to use the nosql database MongoDB, because I have the most experience using this database and prefer this database at the moment over the Firebase database, which was my other option. In this database I registered every user and their completed activities as well as their planned activities. To give my MongoDB skills an extra boost I dove into Mongoose to write less duplicate code and add another level of security by for example hashing the passwords with b-crypt.
+
+### Sessions
+Via a sessions cookie the logged in user gets saved. This way the application knows that a user is logged in so the user doesn’t have to login again at every page refresh.
+
+### Actor diagram
+You can see which routes use which actor in the actor diagram below. This gives an impression on how my code is structured.
+<details>
+<summary>Actor diagram</summary>
+
+[Link to Actor diagram](https://user-images.githubusercontent.com/55492381/122047144-13978e80-cde0-11eb-898b-2d1793e2f6b4.jpg)  
+![ActorDiagram](https://user-images.githubusercontent.com/55492381/122047144-13978e80-cde0-11eb-898b-2d1793e2f6b4.jpg)  
+</details>
+
+### Interaction diagram
+In the interaction diagram you can see the interaction between the features, pages and the database.
+<details>
+<summary>Interaction diagram</summary>
+
+[link to Interaction diagram](https://user-images.githubusercontent.com/55492381/122047160-172b1580-cde0-11eb-86d0-6353dbc7cc95.jpg) 
+![interaction-diagram](https://user-images.githubusercontent.com/55492381/122047160-172b1580-cde0-11eb-86d0-6353dbc7cc95.jpg)  
+</details>
+
+
+### Dataflow diagram
+When the data is saved and when it is required is drawn in the dataflow diagram below.
+<details>
+<summary>Dataflow diagram</summary>
+ 
+[Link to dataflow](https://user-images.githubusercontent.com/55492381/122047150-14c8bb80-cde0-11eb-9406-d2fdc52d0d89.jpg) 
+![dataflow](https://user-images.githubusercontent.com/55492381/122047150-14c8bb80-cde0-11eb-9406-d2fdc52d0d89.jpg)  
+</details>
 
 ## Planning
 
@@ -64,19 +182,17 @@ Hipper helpt gebruikers met hun revalidatie proces. Het is een device die op bas
 * [x] Planned activities to database
 * [x] Planned activities from database in overview
 * [x] Animation dag en week doel
-
-* [ ] Add todays planned activities to homepage
-* [ ] Add CTA to activity feedback pages
+* [x] Add CTA to activity feedback pages
 * [x] Responsive
-* [ ] Dagdoel instellen
-* [ ] Overzicht dagdoelen
-* [ ] Overzicht activiteiten
-* [ ] Feedback activiteit: hoe ging het?
-* [ ] Pijltjes bij verticale scroll
+* [x] Remove menu while doing an acitivty
+* [x] Add close button while doing an acitivty
 
-* [ ] Activiteit toevoegen - niet live
-* [ ] Menu weg op activiteiten
-* [ ] Close button op activiteit
+* [ ] Manuall set daily goal
+* [ ] Overview goals
+* [ ] Overview activities
+* [ ] Feedback activity: how did it go?
+* [ ] Add todays planned activities to homepage
+* [ ] Add previously done activities manually
 * [ ] Add motivators like 10/7 score = party party  
 
 
